@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nibblix India Pvt Ltd — Big Short Pizza & Amul Ice Cream | NibblixIndia.com</title>
+<meta name="description" content="Nibblix India Private Limited — Big Short Pizza, Amul Ice Cream Distributorship & FMCG Distribution across Pune's top corporate campuses.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#E8A838;--gold-light:#F5C563;--deep-red:#C41E3A;--hot-red:#E63946;--cream:#FFF8EC;--black:#0C0A08;--surface:#1A1714;--brown:#2A231C;--muted:rgba(255,248,236,0.5);--soft:rgba(255,248,236,0.7)}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Outfit',sans-serif;background:var(--black);color:var(--cream);overflow-x:hidden}
+.gold{color:var(--gold)}.red{color:var(--hot-red)}
+
+/* LOADER */
+#loader{position:fixed;inset:0;z-index:10000;background:var(--black);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--gold);letter-spacing:.08em;margin-bottom:2rem}
+.loader-bar-wrap{width:200px;height:3px;background:rgba(232,168,56,.15);border-radius:4px;overflow:hidden}
+.loader-bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--hot-red));border-radius:4px;animation:loadBar 1.8s ease-in-out forwards}
+@keyframes loadBar{to{width:100%}}
+
+/* CURSOR */
+.cdot{width:10px;height:10px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;mix-blend-mode:difference}
+.cring{width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;opacity:.5;transition:all .25s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 4vw;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(24px);background:rgba(12,10,8,.7);border-bottom:1px solid rgba(232,168,56,.08);transition:all .4s}
+nav.scrolled{padding:.8rem 4vw;background:rgba(12,10,8,.92)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--gold);letter-spacing:.06em}
+.nav-logo span{color:var(--cream);font-weight:400}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{color:var(--cream);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;position:relative;padding-bottom:3px;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--gold);transition:width .4s cubic-bezier(.22,1,.36,1)}
+.nav-links a:hover{color:var(--gold)}.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:.55rem 1.4rem;border-radius:50px;font-weight:700!important;border:2px solid var(--gold);transition:all .3s}
+.nav-cta:hover{background:transparent!important;color:var(--gold)!important}
+.nav-cta::after{display:none!important}
+.nav-social{display:flex;gap:.8rem;margin-left:.5rem}
+.nav-social a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(232,168,56,.2);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.7rem;color:var(--cream);transition:all .3s}
+.nav-social a:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.mob-tog{display:none;background:none;border:none;color:var(--gold);font-size:1.5rem;cursor:pointer}
+
+/* HERO */
+#hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+#three-bg{position:absolute;inset:0;z-index:0}
+.hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(12,10,8,.88) 0%,rgba(12,10,8,.4) 50%,rgba(12,10,8,.7) 100%)}
+.hero-c{position:relative;z-index:2;padding:0 6vw;max-width:850px}
+.hero-badge{display:inline-flex;align-items:center;gap:.8rem;font-size:.72rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;opacity:0;transform:translateY(25px);animation:fadeUp .7s 2.2s forwards}
+.hero-badge::before{content:'';width:35px;height:1.5px;background:var(--gold)}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6.5vw,5.8rem);font-weight:900;line-height:1.05;margin-bottom:1.5rem;opacity:0;transform:translateY(35px);animation:fadeUp .8s 2.4s forwards}
+.hero-sub{font-size:1.1rem;line-height:1.75;color:var(--soft);max-width:520px;margin-bottom:2.5rem;opacity:0;transform:translateY(35px);animation:fadeUp .8s 2.6s forwards}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(35px);animation:fadeUp .8s 2.8s forwards}
+.btn-g{padding:1rem 2.4rem;background:linear-gradient(135deg,var(--gold),#D4922A);border:none;border-radius:60px;color:var(--black);font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .4s;text-decoration:none}
+.btn-g:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(232,168,56,.35)}
+.btn-o{padding:1rem 2.4rem;background:transparent;border:2px solid rgba(255,248,236,.2);border-radius:60px;color:var(--cream);font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .4s;text-decoration:none}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+
+.hero-marquee{position:absolute;bottom:0;left:0;width:100%;z-index:2;overflow:hidden;border-top:1px solid rgba(232,168,56,.08);padding:1rem 0;background:rgba(12,10,8,.6);backdrop-filter:blur(12px)}
+.mtrack{display:flex;gap:3rem;animation:marquee 25s linear infinite;width:max-content}
+.mitem{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;color:rgba(255,248,236,.3);display:flex;align-items:center;gap:1.5rem}
+.mitem .dot{width:5px;height:5px;border-radius:50%;background:var(--gold)}
+
+/* SECTION */
+.sec{padding:7rem 6vw;position:relative}
+.stag{font-size:.68rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:inline-flex;align-items:center;gap:.8rem}
+.stag::before{content:'';width:28px;height:1.5px;background:var(--gold)}
+.sh{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.8vw,3.2rem);font-weight:900;line-height:1.15;margin-bottom:.8rem}
+.sd{font-size:1rem;color:var(--muted);max-width:550px;line-height:1.7;margin-bottom:3rem}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-text p{font-size:1.05rem;color:var(--soft);line-height:1.8;margin-bottom:1.5rem}
+.hl{color:var(--gold);font-weight:600}
+.brand-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.bcard{background:var(--surface);border:1px solid rgba(232,168,56,.08);border-radius:20px;padding:2rem 1.5rem;text-align:center;transition:all .5s cubic-bezier(.22,1,.36,1);cursor:pointer}
+.bcard:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 20px 50px rgba(232,168,56,.1)}
+.bcard:nth-child(2){transform:translateY(1.5rem)}.bcard:nth-child(2):hover{transform:translateY(calc(1.5rem - 6px))}
+.bcard-icon{width:70px;height:70px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-size:2rem}
+.bcard:nth-child(1) .bcard-icon{background:linear-gradient(135deg,var(--gold),#D4922A)}
+.bcard:nth-child(2) .bcard-icon{background:linear-gradient(135deg,#5BCEFA,#2D7BFF)}
+.bcard:nth-child(3) .bcard-icon{background:linear-gradient(135deg,var(--hot-red),var(--deep-red))}
+.bcard:nth-child(4) .bcard-icon{background:linear-gradient(135deg,#7BD45A,#4CAF50)}
+.bcard-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.3rem}
+.bcard-sub{font-size:.8rem;color:var(--muted);line-height:1.4}
+
+/* BRANCHES */
+.branch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.branch-card{border-radius:20px;overflow:hidden;position:relative;height:280px;cursor:pointer;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.branch-card:hover{transform:translateY(-5px)}
+.branch-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.branch-card:hover img{transform:scale(1.06)}
+.branch-overlay{position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(12,10,8,.9));z-index:1;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end}
+.branch-tag{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.branch-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700}
+.branch-addr{font-size:.85rem;color:var(--muted);margin-top:.2rem}
+
+/* PRODUCTS */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.pcard{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:3/4;cursor:pointer;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.pcard:nth-child(2){transform:translateY(2rem)}.pcard:hover{transform:scale(1.03)}.pcard:nth-child(2):hover{transform:translateY(2rem) scale(1.03)}
+.pcard-bg{position:absolute;inset:0;transition:transform .6s}.pcard:hover .pcard-bg{transform:scale(1.08)}
+.pcard:nth-child(1) .pcard-bg{background:linear-gradient(135deg,#E8A838,#D4922A,#C41E3A)}
+.pcard:nth-child(2) .pcard-bg{background:linear-gradient(135deg,#5BCEFA,#2D7BFF,#6B2DFF)}
+.pcard:nth-child(3) .pcard-bg{background:linear-gradient(135deg,#7BD45A,#E8A838,#D4922A)}
+.pcard:nth-child(4) .pcard-bg{background:linear-gradient(135deg,#C41E3A,#E63946,#E8A838)}
+.pcard:nth-child(5) .pcard-bg{background:linear-gradient(135deg,#6B2DFF,#C41E3A,#E8A838)}
+.pcard:nth-child(6) .pcard-bg{background:linear-gradient(135deg,#E8A838,#7BD45A,#2D7BFF)}
+.pcard-emoji{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:5rem;opacity:.35;z-index:1}
+.pcard-info{position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(transparent,rgba(12,10,8,.92));z-index:2}
+.pcard-tag{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.pcard-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:4rem 0;margin-top:4rem;border-top:1px solid rgba(232,168,56,.06);border-bottom:1px solid rgba(232,168,56,.06)}
+.stat{text-align:center}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--gold)}
+.stat-l{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+
+/* SHIPPING */
+#shipping{background:var(--surface);overflow:hidden}
+.ship-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem}
+.ship-card{background:rgba(232,168,56,.04);border:1px solid rgba(232,168,56,.08);border-radius:20px;padding:2.5rem 2rem;text-align:center;transition:all .5s cubic-bezier(.22,1,.36,1)}
+.ship-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 15px 40px rgba(232,168,56,.08)}
+.ship-icon{font-size:3rem;margin-bottom:1rem}
+.ship-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:.5rem}
+.ship-desc{font-size:.9rem;color:var(--muted);line-height:1.6}
+
+/* PARTNERS */
+#partners{background:var(--brown);padding:4rem 6vw;text-align:center}
+.partners-t{font-size:.7rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:2.5rem}
+.partners-row{display:flex;justify-content:center;align-items:center;gap:4rem;flex-wrap:wrap}
+.plogo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:rgba(255,248,236,.2);transition:color .3s;letter-spacing:.05em;cursor:pointer}
+.plogo:hover{color:var(--gold)}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.tcard{background:var(--surface);border:1px solid rgba(232,168,56,.06);border-radius:20px;padding:2.5rem 1.5rem 2rem;text-align:center;transition:all .5s cubic-bezier(.22,1,.36,1)}
+.tcard:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 20px 50px rgba(232,168,56,.08)}
+.tcard-photo{width:100px;height:100px;border-radius:50%;margin:0 auto 1.2rem;overflow:hidden;border:3px solid rgba(232,168,56,.15);box-shadow:0 8px 25px rgba(0,0,0,.3)}
+.tcard-photo img{width:100%;height:100%;object-fit:cover;object-position:top;filter:brightness(1.05) contrast(1.08) saturate(1.1)}
+.tcard-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
+.tcard-role{font-size:.66rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.tcard-bio{font-size:.85rem;color:var(--muted);line-height:1.5}
+
+/* VISION */
+#vision{background:var(--black);text-align:center;padding:6rem 6vw}
+.vbox{max-width:750px;margin:0 auto}
+.vquote{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:700;line-height:1.4;margin-bottom:1rem;font-style:italic}
+.vsub{font-size:1rem;color:var(--muted);line-height:1.7}
+
+/* LEGAL */
+#legal{background:linear-gradient(180deg,var(--black),#100D09)}
+.legal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.lcard{background:var(--surface);border:1px solid rgba(232,168,56,.06);border-radius:16px;padding:1.8rem;display:flex;align-items:center;gap:1rem;cursor:pointer;transition:all .4s;text-decoration:none;color:var(--cream)}
+.lcard:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.lcard-icon{width:48px;height:48px;border-radius:12px;background:rgba(232,168,56,.08);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.lcard-text{flex:1}
+.lcard-name{font-weight:700;font-size:.9rem;margin-bottom:.15rem}
+.lcard-type{font-size:.7rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-big{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;line-height:1.2;margin-bottom:1.5rem}
+.contact-items{display:flex;flex-direction:column;gap:1.2rem;margin-top:2rem}
+.ci{display:flex;align-items:center;gap:1rem;font-size:.95rem;color:var(--soft)}
+.ci-icon{width:48px;height:48px;border-radius:14px;background:rgba(232,168,56,.08);border:1px solid rgba(232,168,56,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.cform{background:var(--surface);border:1px solid rgba(232,168,56,.06);border-radius:24px;padding:2.8rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1.3rem}
+.fg label{display:block;font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.fg input,.fg textarea{width:100%;padding:.9rem 1rem;background:rgba(255,248,236,.03);border:1px solid rgba(232,168,56,.1);border-radius:12px;color:var(--cream);font-family:'Outfit',sans-serif;font-size:.92rem;transition:border-color .3s;outline:none}
+.fg input:focus,.fg textarea:focus{border-color:var(--gold)}
+.fg textarea{resize:vertical;min-height:120px}
+.btn-sub{width:100%;padding:1rem;background:linear-gradient(135deg,var(--gold),var(--hot-red));border:none;border-radius:60px;color:#fff;font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .4s;margin-top:.3rem}
+.btn-sub:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(232,168,56,.3)}
+
+/* FOOTER */
+footer{padding:2.5rem 6vw;border-top:1px solid rgba(232,168,56,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.fc{font-size:.75rem;color:var(--muted);letter-spacing:.08em}
+.fc a{color:var(--gold);text-decoration:none}
+.flinks{display:flex;gap:2rem}
+.flinks a{color:var(--muted);text-decoration:none;font-size:.75rem;letter-spacing:.08em;transition:color .3s}
+.flinks a:hover{color:var(--gold)}
+.fsocial{display:flex;gap:1rem}
+.fsocial a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(232,168,56,.15);display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--cream);font-size:.75rem;transition:all .3s}
+.fsocial a:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.reveal{opacity:0;transform:translateY(40px);transition:all .85s cubic-bezier(.22,1,.36,1)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.08s}.rd2{transition-delay:.16s}.rd3{transition-delay:.24s}
+.rd4{transition-delay:.32s}.rd5{transition-delay:.4s}.rd6{transition-delay:.48s}
+.glow{position:absolute;border-radius:50%;filter:blur(130px);pointer-events:none;opacity:.12}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem}
+  .prod-grid,.team-grid{grid-template-columns:repeat(2,1fr)}
+  .legal-grid{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .ship-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  nav{padding:1rem 5vw}
+  .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(12,10,8,.95);padding:2rem;gap:1.5rem;border-bottom:1px solid rgba(232,168,56,.1)}
+  .mob-tog{display:block}
+  .nav-social{display:none}
+  .sec{padding:5rem 5vw}
+  .prod-grid,.branch-grid,.team-grid,.legal-grid{grid-template-columns:1fr}
+  .pcard:nth-child(2){transform:none}.pcard:nth-child(2):hover{transform:scale(1.03)}
+  .hero-c{padding:0 5vw}
+  .frow{grid-template-columns:1fr}
+  .cdot,.cring{display:none}
+  .partners-row{gap:2rem}
+  .stats{grid-template-columns:1fr 1fr;gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div id="loader"><div class="loader-logo">NIBBLIX</div><div class="loader-bar-wrap"><div class="loader-bar"></div></div></div>
+<div class="cdot" id="cd"></div><div class="cring" id="cr"></div>
+
+<nav id="mn">
+  <div class="nav-logo">NIBBLIX <span>INDIA</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#branches">Branches</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#legal">Legal</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="nav-social">
+    <a href="https://www.instagram.com/nibblix_india_pvt_ltd?igsh=NTc4MTIwNjQ2YQ==" target="_blank" title="Instagram">IG</a>
+    <a href="https://www.linkedin.com/in/abhishek-keskar-a66a62204" target="_blank" title="LinkedIn">in</a>
+  </div>
+  <button class="mob-tog" onclick="const n=document.querySelector('.nav-links');n.style.display=n.style.display==='flex'?'none':'flex'">&#9776;</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="three-bg"></canvas>
+  <div class="hero-ov"></div>
+  <div class="hero-c">
+    <p class="hero-badge">Nibblix Indian Private Limited</p>
+    <h1 class="hero-title">Where <span class="gold">Flavor</span><br>Meets <span class="red">Experience.</span></h1>
+    <p class="hero-sub">From freshly crafted pizzas to premium Amul ice creams — we serve India's top corporate campuses, neighbourhood grocery stores, and everything in between. Big Short Pizza & Amul, under one roof.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-g" onclick="event.preventDefault();document.getElementById('products').scrollIntoView({behavior:'smooth'})">Explore Products</a>
+      <a href="#contact" class="btn-o" onclick="event.preventDefault();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-marquee"><div class="mtrack">
+    <span class="mitem"><span class="dot"></span>Big Short Pizza</span><span class="mitem"><span class="dot"></span>Amul Ice Cream</span><span class="mitem"><span class="dot"></span>Fresh Dough Daily</span><span class="mitem"><span class="dot"></span>Corporate Canteens</span><span class="mitem"><span class="dot"></span>Parle &bull; Britannia &bull; Unibic</span><span class="mitem"><span class="dot"></span>1 Box or 100 — We Deliver</span><span class="mitem"><span class="dot"></span>Pune, India</span>
+    <span class="mitem"><span class="dot"></span>Big Short Pizza</span><span class="mitem"><span class="dot"></span>Amul Ice Cream</span><span class="mitem"><span class="dot"></span>Fresh Dough Daily</span><span class="mitem"><span class="dot"></span>Corporate Canteens</span><span class="mitem"><span class="dot"></span>Parle &bull; Britannia &bull; Unibic</span><span class="mitem"><span class="dot"></span>1 Box or 100 — We Deliver</span><span class="mitem"><span class="dot"></span>Pune, India</span>
+  </div></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="glow" style="width:500px;height:500px;top:-100px;right:-150px;background:var(--gold)"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="stag reveal">Who We Are</div>
+      <h2 class="sh reveal rd1">Crafted with <span class="gold">passion</span>,<br>served with <span class="gold">pride</span>.</h2>
+      <p class="reveal rd2"><span class="hl">Big Short Pizza</span> is a fast-casual pizzeria serving delicious, made-to-order pies with freshly prepared in-house dough daily. Perfect for a quick lunch, snack, or dinner on-the-go at your corporate campus.</p>
+      <p class="reveal rd3">We're an <span class="hl">authorized direct party of Amul</span>, bringing premium ice creams, chocolates, cookies, and dairy treats to corporate campuses across Pune. We supply to <span class="hl">Sodexo India Pvt Ltd</span> and distribute for Parle, Britannia, Sunfeast &amp; Unibic.</p>
+    </div>
+    <div class="brand-cards">
+      <div class="bcard reveal rd1"><div class="bcard-icon">&#127829;</div><div class="bcard-name">Big Short Pizza</div><div class="bcard-sub">Fresh dough pizzas, burgers, pastas, rolls & mojitos</div></div>
+      <div class="bcard reveal rd2"><div class="bcard-icon">&#127846;</div><div class="bcard-name">Amul Ice Cream</div><div class="bcard-sub">Scooping, Tricones, Kulfis & all Amul products</div></div>
+      <div class="bcard reveal rd3"><div class="bcard-icon">&#127850;</div><div class="bcard-name">Biscuit Distribution</div><div class="bcard-sub">Parle, Britannia, Sunfeast & Unibic brands</div></div>
+      <div class="bcard reveal rd4"><div class="bcard-icon">&#128666;</div><div class="bcard-name">Sodexo Supply</div><div class="bcard-sub">Authorized supplier to Sodexo India Pvt Ltd</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="sec">
+  <div class="glow" style="width:400px;height:400px;bottom:-80px;left:-100px;background:var(--hot-red)"></div>
+  <div class="stag reveal">What We Serve</div>
+  <h2 class="sh reveal rd1">Products that keep them<br>coming <span class="gold">back</span>.</h2>
+  <p class="sd reveal rd2">Every product is crafted for quality and served with speed — from artisanal pizzas to creamy scoops.</p>
+  <div class="prod-grid">
+    <div class="pcard reveal rd1"><div class="pcard-bg"></div><div class="pcard-emoji">&#127829;</div><div class="pcard-info"><div class="pcard-tag">Big Short Pizza</div><div class="pcard-name">Artisan Pizzas</div></div></div>
+    <div class="pcard reveal rd2"><div class="pcard-bg"></div><div class="pcard-emoji">&#127846;</div><div class="pcard-info"><div class="pcard-tag">Amul Premium</div><div class="pcard-name">Ice Cream & Kulfi</div></div></div>
+    <div class="pcard reveal rd3"><div class="pcard-bg"></div><div class="pcard-emoji">&#127828;</div><div class="pcard-info"><div class="pcard-tag">Fast Casual</div><div class="pcard-name">Burgers & Rolls</div></div></div>
+    <div class="pcard reveal rd4"><div class="pcard-bg"></div><div class="pcard-emoji">&#127836;</div><div class="pcard-info"><div class="pcard-tag">Italian Inspired</div><div class="pcard-name">Pastas & Sides</div></div></div>
+    <div class="pcard reveal rd5"><div class="pcard-bg"></div><div class="pcard-emoji">&#127851;</div><div class="pcard-info"><div class="pcard-tag">Amul Range</div><div class="pcard-name">Chocolates & Sweets</div></div></div>
+    <div class="pcard reveal rd6"><div class="pcard-bg"></div><div class="pcard-emoji">&#127849;</div><div class="pcard-info"><div class="pcard-tag">Distribution</div><div class="pcard-name">Biscuits & Cookies</div></div></div>
+  </div>
+  <div class="stats">
+    <div class="stat reveal"><div class="stat-n" data-t="5">0</div><div class="stat-l">Corporate Counters</div></div>
+    <div class="stat reveal rd1"><div class="stat-n" data-t="12">0</div><div class="stat-l">Team Members</div></div>
+    <div class="stat reveal rd2"><div class="stat-n" data-t="6">0</div><div class="stat-l">Brand Partners</div></div>
+    <div class="stat reveal rd3"><div class="stat-n" data-t="3">0</div><div class="stat-l">Cities &amp; Growing</div></div>
+  </div>
+</section>
+
+<!-- SHIPPING -->
+<section id="shipping" class="sec">
+  <div class="stag reveal" style="justify-content:center;display:flex">Shipping & Logistics</div>
+  <h2 class="sh reveal rd1" style="text-align:center">Whether it's <span class="gold">1 box</span> or <span class="gold">100</span>,<br>we deliver.</h2>
+  <p class="sd reveal rd2" style="text-align:center;margin:0 auto 3rem">From a single carton to a kirana store to a 500-seat corporate cafeteria — we handle end-to-end supply chain with the same care and speed, regardless of order size.</p>
+  <div class="ship-grid">
+    <div class="ship-card reveal rd1"><div class="ship-icon">&#128230;</div><div class="ship-title">Small to Large</div><div class="ship-desc">A neighbourhood kirana restocking biscuits or a corporate canteen ordering in bulk — we serve both with equal commitment.</div></div>
+    <div class="ship-card reveal rd2"><div class="ship-icon">&#128666;</div><div class="ship-title">Direct Delivery</div><div class="ship-desc">Our fleet delivers directly to your store, campus canteen, office pantry, or event venue — anywhere in Pune and growing.</div></div>
+    <div class="ship-card reveal rd3"><div class="ship-icon">&#9201;</div><div class="ship-title">On-Time, Every Time</div><div class="ship-desc">Whether it's a daily grocery restock or a scheduled canteen delivery, we guarantee timely service so your business never stops.</div></div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners"><div class="partners-t reveal">Trusted Partners & Associations</div>
+  <div class="partners-row">
+    <span class="plogo reveal rd1">AMUL</span><span class="plogo reveal rd2">SODEXO</span><span class="plogo reveal rd3">PARLE</span><span class="plogo reveal rd4">BRITANNIA</span><span class="plogo reveal rd5">UNIBIC</span><span class="plogo reveal rd6">SUNFEAST</span>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section id="branches" class="sec">
+  <div class="glow" style="width:400px;height:400px;top:30%;right:-100px;background:var(--gold)"></div>
+  <div class="stag reveal">Our Presence</div>
+  <h2 class="sh reveal rd1">Serving India's <span class="gold">top</span><br>corporate campuses.</h2>
+  <p class="sd reveal rd2">From Bajaj to Capgemini, Mercedes to Infosys — we power the canteens that fuel innovation.</p>
+  <div class="branch-grid">
+    <div class="branch-card reveal rd1"><img src="images/branches/bigshort-counter.jpeg" alt="Big Short Pizza Counter"><div class="branch-overlay"><div class="branch-tag">Big Short Pizza</div><div class="branch-name">Bajaj Auto Campus</div><div class="branch-addr">MRP Counter &bull; Akurdi, Pune 411044</div></div></div>
+    <div class="branch-card reveal rd2"><img src="images/branches/amul-counter.jpeg" alt="Amul Counter"><div class="branch-overlay"><div class="branch-tag">Amul Ice Cream</div><div class="branch-name">Bajaj Auto Campus</div><div class="branch-addr">Amul Counter &bull; Akurdi, Pune 411044</div></div></div>
+    <div class="branch-card reveal rd3"><img src="images/branches/infosys-counter.jpeg" alt="Infosys Counter"><div class="branch-overlay"><div class="branch-tag">Big Short Pizza</div><div class="branch-name">Infosys Campus</div><div class="branch-addr">MRP Counter &bull; Hinjewadi, Pune</div></div></div>
+    <div class="branch-card reveal rd4"><img src="images/branches/mercedes-counter.jpeg" alt="Mercedes Counter"><div class="branch-overlay"><div class="branch-tag">Big Short Pizza</div><div class="branch-name">Mercedes-Benz Campus</div><div class="branch-addr">Grab n Go Counter &bull; Pune</div></div></div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="sec">
+  <div class="glow" style="width:500px;height:500px;bottom:-150px;left:-100px;background:var(--deep-red)"></div>
+  <div class="stag reveal">Our People</div>
+  <h2 class="sh reveal rd1">The team behind<br>every <span class="gold">bite</span>.</h2>
+  <p class="sd reveal rd2">12 passionate food professionals running operations across Pune's biggest corporate campuses.</p>
+  <div class="team-grid">
+    <div class="tcard reveal rd1"><div class="tcard-photo"><img src="images/team/abhishek-keskar.jpeg" alt="Abhishek Keskar"></div><div class="tcard-name">Abhishek Keskar</div><div class="tcard-role">Managing Director</div><p class="tcard-bio">Founder & visionary driving Nibblix India's expansion across corporate India.</p></div>
+    <div class="tcard reveal rd2"><div class="tcard-photo"><img src="images/team/mayawati-chakre.jpeg" alt="Mayawati Chakre"></div><div class="tcard-name">Mayawati Chakre</div><div class="tcard-role">CEO</div><p class="tcard-bio">Strategic leader overseeing all operations, partnerships, and business growth.</p></div>
+    <div class="tcard reveal rd3"><div class="tcard-photo"><img src="images/team/sakshi-shinde.jpeg" alt="Sakshi Shinde"></div><div class="tcard-name">Sakshi Shinde</div><div class="tcard-role">Bajaj Auto — Branch Manager</div><p class="tcard-bio">Manages day-to-day operations at the Bajaj Auto Akurdi campus.</p></div>
+    <div class="tcard reveal rd4"><div class="tcard-photo"><img src="images/team/vighnesh-divekar.jpeg" alt="Vighnesh Divekar"></div><div class="tcard-name">Vighnesh Divekar</div><div class="tcard-role">Infosys — Branch Manager</div><p class="tcard-bio">Leads the Infosys campus operations with quality and speed.</p></div>
+    <div class="tcard reveal rd5"><div class="tcard-photo"><img src="images/team/vaishnavi-surushe.jpeg" alt="Vaishnavi Surushe"></div><div class="tcard-name">Vaishnavi Surushe</div><div class="tcard-role">Capgemini — Branch Manager</div><p class="tcard-bio">Runs the Capgemini Hinjewadi counter with precision and flair.</p></div>
+    <div class="tcard reveal rd6"><div class="tcard-photo"><img src="images/team/punam-dakore.jpeg" alt="Punam Dakore"></div><div class="tcard-name">Punam Dakore</div><div class="tcard-role">Mercedes — Branch Manager</div><p class="tcard-bio">Oversees the Mercedes campus counter, delivering premium service.</p></div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision">
+  <div class="vbox reveal">
+    <div class="stag" style="justify-content:center;display:flex">Vision & Mission</div>
+    <p class="vquote">"From a <span class="gold">neighbourhood kirana</span> to a <span class="gold">Fortune 500 canteen</span> — we serve them all."</p>
+    <p class="vsub">Our vision is to be the food partner every business can rely on — whether you're a small grocery store stocking biscuits or a corporate giant feeding thousands. No customer is too small, no order too large. Quality stays the same whether it's 1 carton or 1,000. That's the Nibblix promise — built for the corner shop and the boardroom alike.</p>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section id="legal" class="sec">
+  <div class="stag reveal">Legal & Compliance</div>
+  <h2 class="sh reveal rd1">Fully registered,<br>fully <span class="gold">compliant</span>.</h2>
+  <p class="sd reveal rd2">Nibblix India Pvt Ltd (CIN: U47890PN2025PTC246775) is a registered Private Limited Company with all statutory certifications. Click any document to view.</p>
+  <div class="legal-grid">
+    <a class="lcard reveal rd1" href="docs/certificate-of-incorporation.pdf" target="_blank"><div class="lcard-icon">&#128220;</div><div class="lcard-text"><div class="lcard-name">Certificate of Incorporation</div><div class="lcard-type">Ministry of Corporate Affairs</div></div></a>
+    <a class="lcard reveal rd2" href="docs/gst-certificate.pdf" target="_blank"><div class="lcard-icon">&#128203;</div><div class="lcard-text"><div class="lcard-name">GST Registration</div><div class="lcard-type">GSTIN: 27AAKCN8793J1ZK</div></div></a>
+    <a class="lcard reveal rd3" href="docs/fssai-food-license.pdf" target="_blank"><div class="lcard-icon">&#127860;</div><div class="lcard-text"><div class="lcard-name">FSSAI Food License</div><div class="lcard-type">Reg: 21525083011594</div></div></a>
+    <a class="lcard reveal rd4" href="docs/pan-card.pdf" target="_blank"><div class="lcard-icon">&#128179;</div><div class="lcard-text"><div class="lcard-name">PAN Card</div><div class="lcard-type">PAN: AAKCN8793J</div></div></a>
+    <a class="lcard reveal rd5" href="docs/udyam-registration.pdf" target="_blank"><div class="lcard-icon">&#127981;</div><div class="lcard-text"><div class="lcard-name">Udyam Registration</div><div class="lcard-type">MSME Micro Enterprise</div></div></a>
+    <a class="lcard reveal rd6" href="docs/provident-fund.pdf" target="_blank"><div class="lcard-icon">&#128176;</div><div class="lcard-text"><div class="lcard-name">Provident Fund</div><div class="lcard-type">EPFO Registration</div></div></a>
+    <a class="lcard reveal rd1" href="docs/esic-registration.pdf" target="_blank"><div class="lcard-icon">&#127973;</div><div class="lcard-text"><div class="lcard-name">ESIC Registration</div><div class="lcard-type">Employee Insurance</div></div></a>
+    <a class="lcard reveal rd2" href="docs/tan-certificate.pdf" target="_blank"><div class="lcard-icon">&#128196;</div><div class="lcard-text"><div class="lcard-name">TAN Certificate</div><div class="lcard-type">Tax Deduction Account</div></div></a>
+    <a class="lcard reveal rd3" href="docs/din-approval.pdf" target="_blank"><div class="lcard-icon">&#128101;</div><div class="lcard-text"><div class="lcard-name">DIN Approval</div><div class="lcard-type">Director Identification</div></div></a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="glow" style="width:400px;height:400px;top:50%;right:5%;transform:translateY(-50%);background:var(--gold)"></div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="stag">Get In Touch</div>
+      <div class="contact-big">Let's bring bold flavors to <span class="gold">your campus</span>.</div>
+      <p class="sd" style="margin-bottom:0">Interested in a Big Short Pizza counter, Amul distributorship, or FMCG supply for your corporate canteen? We'd love to talk.</p>
+      <div class="contact-items">
+        <div class="ci"><div class="ci-icon">&#128100;</div><span>Abhishek Keskar — Managing Director</span></div>
+        <div class="ci"><div class="ci-icon">&#128222;</div><span>+91 97639 89044</span></div>
+        <div class="ci"><div class="ci-icon">&#9993;</div><span>abhishek.keskar977@gmail.com</span></div>
+        <div class="ci"><div class="ci-icon">&#128205;</div><span>Flat C/6, Sejal Park, Keshavnagar, Pune 411033</span></div>
+      </div>
+    </div>
+    <form class="cform reveal rd2" id="contactForm">
+      <input type="hidden" name="to_email" value="abhishek.keskar977@gmail.com">
+      <div class="frow"><div class="fg"><label>Full Name</label><input type="text" name="from_name" placeholder="Your name" required></div><div class="fg"><label>Company</label><input type="text" name="company" placeholder="Company name"></div></div>
+      <div class="fg"><label>Email</label><input type="email" name="reply_to" placeholder="you@company.com" required></div>
+      <div class="fg"><label>Phone</label><input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required></div>
+      <div class="fg"><label>Message</label><textarea name="message" placeholder="Tell us about your requirements..." required></textarea></div>
+      <button type="submit" class="btn-sub" id="submitBtn">Send Inquiry</button>
+      <p id="formStatus" style="text-align:center;margin-top:1rem;font-size:.85rem;display:none"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="fc">&copy; 2026 <a href="https://nibblixindia.com">Nibblix India Pvt Ltd</a> &mdash; NibblixIndia.com | CIN: U47890PN2025PTC246775</div>
+  <div class="fsocial">
+    <a href="https://www.instagram.com/nibblix_india_pvt_ltd?igsh=NTc4MTIwNjQ2YQ==" target="_blank" title="Instagram">IG</a>
+    <a href="https://www.linkedin.com/in/abhishek-keskar-a66a62204" target="_blank" title="LinkedIn">in</a>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('hidden'),2000)});
+const d=document.getElementById('cd'),r=document.getElementById('cr');let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function ac(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;d.style.left=mx-5+'px';d.style.top=my-5+'px';r.style.left=rx-18+'px';r.style.top=ry-18+'px';requestAnimationFrame(ac)})();
+window.addEventListener('scroll',()=>{document.getElementById('mn').classList.toggle('scrolled',window.scrollY>50)});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(x=>obs.observe(x));
+const cobs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const el=x.target,t=+el.dataset.t;let c=0;const s=Math.max(1,Math.floor(t/40));const i=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(i)}el.textContent=c+'+'},40);cobs.unobserve(el)}})},{threshold:.5});
+document.querySelectorAll('.stat-n[data-t]').forEach(s=>cobs.observe(s));
+
+// EMAILJS — Contact form sends emails to abhishek.keskar977@gmail.com
+// Service: Gmail (service_5lyz9fk) | Template: Contact Us (template_z4k82a3)
+emailjs.init('68vHPVd55bA5CSGzl');
+
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=document.getElementById('submitBtn');
+  const st=document.getElementById('formStatus');
+  btn.textContent='SENDING...';btn.disabled=true;
+
+  emailjs.sendForm('service_5lyz9fk','template_z4k82a3',this)
+    .then(function(){
+      st.style.display='block';st.style.color='var(--gold)';
+      st.textContent='✓ Message sent! Abhishek will get back to you shortly.';
+      document.getElementById('contactForm').reset();
+      btn.textContent='SENT ✓';
+      setTimeout(()=>{btn.textContent='SEND INQUIRY';btn.disabled=false;st.style.display='none'},4000);
+    },function(err){
+      st.style.display='block';st.style.color='var(--hot-red)';
+      st.textContent='Could not send. Please email abhishek.keskar977@gmail.com directly.';
+      btn.textContent='SEND INQUIRY';btn.disabled=false;
+      console.error('EmailJS Error:',err);
+    });
+});
+
+(function(){
+  const canvas=document.getElementById('three-bg');const R=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  R.setSize(window.innerWidth,window.innerHeight);R.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  const scene=new THREE.Scene();const cam=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,.1,1000);cam.position.z=30;
+  scene.add(new THREE.AmbientLight(0xffffff,.3));
+  const p1=new THREE.PointLight(0xE8A838,2,100);p1.position.set(15,15,15);scene.add(p1);
+  const p2=new THREE.PointLight(0xE63946,1.5,100);p2.position.set(-15,-10,10);scene.add(p2);
+  const p3=new THREE.PointLight(0x2D7BFF,1,80);p3.position.set(0,20,-10);scene.add(p3);
+  const geos=[new THREE.IcosahedronGeometry(1.8,0),new THREE.TorusGeometry(1.5,.5,16,32),new THREE.OctahedronGeometry(1.6,0),new THREE.TorusKnotGeometry(1.2,.4,64,16),new THREE.DodecahedronGeometry(1.4,0),new THREE.SphereGeometry(1.3,32,32),new THREE.BoxGeometry(2,2,2)];
+  const cols=[0xE8A838,0xE63946,0xF5C563,0xD4922A,0xC41E3A,0x2D7BFF,0x7BD45A,0xFFFFFF];const objs=[];
+  for(let i=0;i<18;i++){const mat=new THREE.MeshStandardMaterial({color:cols[i%cols.length],metalness:.3,roughness:.4,transparent:true,opacity:.2+Math.random()*.25,wireframe:Math.random()>.5});
+  const m=new THREE.Mesh(geos[i%geos.length],mat);m.position.set((Math.random()-.5)*50,(Math.random()-.5)*35,(Math.random()-.5)*25-5);
+  m.rotation.set(Math.random()*Math.PI,Math.random()*Math.PI,0);const sc=.4+Math.random()*.8;m.scale.set(sc,sc,sc);scene.add(m);
+  objs.push({mesh:m,rx:(Math.random()-.5)*.008,ry:(Math.random()-.5)*.008,fs:.3+Math.random()*.6,fa:.5+Math.random()*1.5,by:m.position.y})}
+  const pg=new THREE.BufferGeometry();const pc=200;const pos=new Float32Array(pc*3);for(let i=0;i<pc*3;i++)pos[i]=(Math.random()-.5)*80;
+  pg.setAttribute('position',new THREE.BufferAttribute(pos,3));const pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0xE8A838,size:.08,transparent:true,opacity:.5}));scene.add(pts);
+  let mX=0,mY=0;document.addEventListener('mousemove',e=>{mX=(e.clientX/window.innerWidth-.5)*2;mY=(e.clientY/window.innerHeight-.5)*2});
+  let t=0;(function anim(){requestAnimationFrame(anim);t+=.01;objs.forEach(o=>{o.mesh.rotation.x+=o.rx;o.mesh.rotation.y+=o.ry;o.mesh.position.y=o.by+Math.sin(t*o.fs)*o.fa});
+  pts.rotation.y+=.0003;pts.rotation.x+=.0001;cam.position.x+=(mX*3-cam.position.x)*.03;cam.position.y+=(-mY*2-cam.position.y)*.03;cam.lookAt(scene.position);
+  p1.position.x=Math.sin(t*.5)*15;p1.position.y=Math.cos(t*.3)*15;p2.position.x=Math.cos(t*.4)*12;R.render(scene,cam)})();
+  window.addEventListener('resize',()=>{cam.aspect=window.innerWidth/window.innerHeight;cam.updateProjectionMatrix();R.setSize(window.innerWidth,window.innerHeight)});
+})();
+</script>
+</body>
+</html>
