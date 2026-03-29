@@ -53,22 +53,65 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .btn-ghost{padding:.95rem 2.2rem;background:transparent;border:1.5px solid rgba(255,248,236,.18);border-radius:60px;color:var(--cream);font-family:'Sora',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .4s}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 
-.hero-floats{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.float-img{position:absolute;border-radius:14px;box-shadow:0 10px 35px rgba(0,0,0,.5);overflow:hidden;opacity:0;animation:floatIn 1s forwards}
-.float-img img{width:100%;height:100%;object-fit:cover;border-radius:14px}
-.float-img::after{content:'';position:absolute;inset:0;border-radius:14px;border:1.5px solid rgba(232,168,56,.12)}
-.fi1{width:110px;height:110px;top:12%;right:6%;animation-delay:2.4s;animation:floatIn 1s 2.4s forwards,bob1 7s 3.4s ease-in-out infinite}
-.fi2{width:95px;height:95px;top:50%;right:12%;animation-delay:2.7s;animation:floatIn 1s 2.7s forwards,bob2 8s 3.7s ease-in-out infinite}
-.fi3{width:80px;height:80px;top:30%;right:2%;animation-delay:3s;animation:floatIn 1s 3s forwards,bob3 6s 4s ease-in-out infinite}
-.fi4{width:100px;height:100px;top:8%;right:20%;animation-delay:3.2s;animation:floatIn 1s 3.2s forwards,bob2 9s 4.2s ease-in-out infinite}
-.fi5{width:75px;height:75px;top:65%;right:4%;animation-delay:3.4s;animation:floatIn 1s 3.4s forwards,bob1 7.5s 4.4s ease-in-out infinite}
-.fi6{width:90px;height:90px;top:42%;right:22%;animation-delay:3.6s;animation:floatIn 1s 3.6s forwards,bob3 8.5s 4.6s ease-in-out infinite}
-.fi7{width:70px;height:70px;top:75%;right:18%;animation-delay:3.8s;animation:floatIn 1s 3.8s forwards,bob1 6.5s 4.8s ease-in-out infinite}
-.fi8{width:85px;height:85px;top:20%;right:30%;animation-delay:4s;animation:floatIn 1s 4s forwards,bob2 7s 5s ease-in-out infinite}
-@keyframes floatIn{to{opacity:.85}}
-@keyframes bob1{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-14px) rotate(2deg)}66%{transform:translateY(-6px) rotate(-1.5deg)}}
-@keyframes bob2{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-10px) rotate(-2deg)}75%{transform:translateY(-16px) rotate(1.5deg)}}
-@keyframes bob3{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(2.5deg)}}
+/* ══════ 3D FLOATING IMAGES ══════ */
+.hero-floats{
+  position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;
+  perspective:1200px;
+  transform-style:preserve-3d;
+}
+.float-img{
+  position:absolute;
+  border-radius:0;
+  box-shadow:none;
+  background:transparent;
+  overflow:visible;
+  opacity:0;
+  transform-style:preserve-3d;
+}
+.float-img::after{display:none}
+.float-img img{
+  width:100%;height:100%;object-fit:contain;
+  border-radius:0;
+  mix-blend-mode:multiply;
+  filter:drop-shadow(0 12px 30px rgba(232,168,56,.35)) drop-shadow(0 4px 8px rgba(0,0,0,.6));
+  transition:transform .4s;
+}
+
+/* ── Enlarged sizes + 3D positions ── */
+.fi1{width:200px;height:200px;top:6%;right:4%;animation:floatIn 1s 2.4s forwards,bob3d1 8s 3.4s ease-in-out infinite}
+.fi2{width:170px;height:170px;top:48%;right:8%;animation:floatIn 1s 2.7s forwards,bob3d2 9s 3.7s ease-in-out infinite}
+.fi3{width:140px;height:140px;top:25%;right:0%;animation:floatIn 1s 3s forwards,bob3d3 7s 4s ease-in-out infinite}
+.fi4{width:180px;height:180px;top:3%;right:18%;animation:floatIn 1s 3.2s forwards,bob3d4 10s 4.2s ease-in-out infinite}
+.fi5{width:130px;height:130px;top:68%;right:2%;animation:floatIn 1s 3.4s forwards,bob3d1 8.5s 4.4s ease-in-out infinite}
+.fi6{width:160px;height:160px;top:38%;right:20%;animation:floatIn 1s 3.6s forwards,bob3d2 9.5s 4.6s ease-in-out infinite}
+.fi7{width:120px;height:120px;top:72%;right:16%;animation:floatIn 1s 3.8s forwards,bob3d3 7.5s 4.8s ease-in-out infinite}
+.fi8{width:155px;height:155px;top:15%;right:30%;animation:floatIn 1s 4s forwards,bob3d4 8s 5s ease-in-out infinite}
+
+@keyframes floatIn{to{opacity:1}}
+
+@keyframes bob3d1{
+  0%,100%{transform:translateY(0) translateZ(0) rotateY(0deg) rotateX(0deg)}
+  25%{transform:translateY(-20px) translateZ(40px) rotateY(8deg) rotateX(-4deg)}
+  50%{transform:translateY(-10px) translateZ(20px) rotateY(-4deg) rotateX(3deg)}
+  75%{transform:translateY(-25px) translateZ(50px) rotateY(6deg) rotateX(-2deg)}
+}
+@keyframes bob3d2{
+  0%,100%{transform:translateY(0) translateZ(0) rotateY(0deg) rotateX(0deg)}
+  20%{transform:translateY(-15px) translateZ(35px) rotateY(-6deg) rotateX(5deg)}
+  50%{transform:translateY(-28px) translateZ(55px) rotateY(10deg) rotateX(-3deg)}
+  80%{transform:translateY(-8px) translateZ(15px) rotateY(-3deg) rotateX(2deg)}
+}
+@keyframes bob3d3{
+  0%,100%{transform:translateY(0) translateZ(0) rotateY(0deg) rotateX(0deg) scale(1)}
+  33%{transform:translateY(-22px) translateZ(45px) rotateY(12deg) rotateX(-5deg) scale(1.05)}
+  66%{transform:translateY(-12px) translateZ(25px) rotateY(-8deg) rotateX(4deg) scale(0.97)}
+}
+@keyframes bob3d4{
+  0%,100%{transform:translateY(0) translateZ(0) rotateY(0deg) rotateX(0deg)}
+  30%{transform:translateY(-18px) translateZ(30px) rotateY(-10deg) rotateX(6deg)}
+  60%{transform:translateY(-30px) translateZ(60px) rotateY(8deg) rotateX(-4deg)}
+  85%{transform:translateY(-6px) translateZ(10px) rotateY(-3deg) rotateX(1deg)}
+}
 
 .hero-stats-bar{position:absolute;bottom:0;left:0;right:0;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(232,168,56,.08);background:rgba(10,9,8,.7);backdrop-filter:blur(16px)}
 .hero-stat{padding:1.8rem 2rem;text-align:center;border-right:1px solid rgba(232,168,56,.06);opacity:0;animation:fadeUp .6s forwards}
@@ -126,15 +169,29 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .usp h4{font-size:.78rem;font-weight:700;letter-spacing:.06em;margin-bottom:.2rem}
 .usp p{font-size:.72rem;color:var(--cream-muted);line-height:1.4}
 
+/* ══════ PRODUCT SHOWCASE — TRANSPARENT ══════ */
 #products-showcase{overflow:hidden;position:relative;padding:5rem 6vw}
 .showcase-marquee{overflow:hidden}
 .showcase-track{display:flex;gap:1.5rem;animation:scrollMarquee 40s linear infinite;width:max-content}
-.showcase-item{width:170px;height:200px;border-radius:16px;overflow:hidden;flex-shrink:0;border:1px solid rgba(232,168,56,.08);background:var(--surface);transition:all .4s;position:relative;display:flex;flex-direction:column}
-.showcase-item:hover{border-color:var(--gold);transform:scale(1.05)}
-.si-img-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:10px;background:#fff;border-radius:16px 16px 0 0;overflow:hidden}
-.si-img-wrap img{max-width:90%;max-height:90%;object-fit:contain;transition:transform .4s}
+.showcase-item{
+  width:170px;height:200px;border-radius:16px;overflow:hidden;flex-shrink:0;
+  border:none;
+  background:transparent;
+  transition:all .4s;position:relative;display:flex;flex-direction:column;
+}
+.showcase-item:hover{transform:scale(1.08)}
+.si-img-wrap{
+  flex:1;display:flex;align-items:center;justify-content:center;padding:10px;
+  background:rgba(255,255,255,.06);
+  border-radius:16px 16px 0 0;overflow:hidden;
+}
+.si-img-wrap img{
+  max-width:90%;max-height:90%;object-fit:contain;transition:transform .4s;
+  mix-blend-mode:multiply;
+  filter:brightness(1.1);
+}
 .showcase-item:hover .si-img-wrap img{transform:scale(1.08)}
-.si-label{padding:.55rem;text-align:center;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-soft);background:var(--surface)}
+.si-label{padding:.55rem;text-align:center;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-soft);background:transparent}
 @keyframes scrollMarquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 #logistics{background:var(--surface);overflow:hidden}
@@ -373,7 +430,6 @@ nav{padding:.8rem 5vw}
 </div></div>
 </section>
 
-<!-- ═══════════ LOGISTICS ═══════════ -->
 <section id="logistics" class="sec">
 <div class="glow" style="width:400px;height:400px;top:10%;left:-80px;background:var(--gold)"></div>
 <div class="stag reveal">Shipping &amp; Logistics</div>
@@ -514,6 +570,26 @@ const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.targe
 document.querySelectorAll('.reveal').forEach(x=>obs.observe(x));
 const cobs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const el=x.target,t=+el.dataset.t;let c=0;const s=Math.max(1,Math.floor(t/30));const i=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(i)}el.textContent=c+'+'},50);cobs.unobserve(el)}})},{threshold:.5});
 document.querySelectorAll('[data-t]').forEach(s=>cobs.observe(s));
+
+// ══════ MOUSE-TRACKED 3D PARALLAX ══════
+const heroEl = document.getElementById('hero');
+const floats = document.querySelectorAll('.float-img');
+heroEl.addEventListener('mousemove', (e) => {
+  const rect = heroEl.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width - 0.5;  // -0.5 to 0.5
+  const y = (e.clientY - rect.top) / rect.height - 0.5;
+  floats.forEach((f, i) => {
+    const depth = 1 + (i % 4) * 0.5; // different depths
+    const moveX = x * 30 * depth;
+    const moveY = y * 20 * depth;
+    const rotY = x * 15 * depth;
+    const rotX = -y * 10 * depth;
+    f.style.transform = `translate(${moveX}px, ${moveY}px) rotateY(${rotY}deg) rotateX(${rotX}deg) translateZ(${depth * 20}px)`;
+  });
+});
+heroEl.addEventListener('mouseleave', () => {
+  floats.forEach(f => { f.style.transform = ''; });
+});
 
 emailjs.init('68vHPVd55bA5CSGzl');
 document.getElementById('contactForm').addEventListener('submit',function(e){
