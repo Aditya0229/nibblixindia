@@ -122,30 +122,43 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .val-card h4{font-family:'DM Serif Display',serif;font-size:.95rem;margin-bottom:.3rem}
 .val-card p{font-size:.75rem;color:var(--cream-muted);line-height:1.5}
 
-/* ══════ WHAT WE OFFER (Pizza + Products combined) ══════ */
+/* ══════ WHAT WE OFFER — 3 EQUAL VERTICALS ══════ */
 #offerings{background:var(--surface);overflow:hidden}
-.pizza-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.pizza-visual{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:var(--brown)}
-.usp-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.vertical-block{background:var(--surface-2);border:1px solid rgba(232,168,56,.06);border-radius:24px;padding:3rem;margin-bottom:3rem;transition:all .5s cubic-bezier(.22,1,.36,1)}
+.vertical-block:hover{border-color:rgba(232,168,56,.12)}
+.vb-header{margin-bottom:2rem}
+.vb-badge{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:1rem}
+.pizza-bg{background:linear-gradient(135deg,var(--gold),var(--gold-dark))}
+.icecream-bg{background:linear-gradient(135deg,#5BCEFA,var(--blue))}
+.mrp-bg{background:linear-gradient(135deg,var(--green),#2E7D32)}
+.vb-label{font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.vb-title{font-family:'DM Serif Display',serif;font-size:clamp(1.5rem,2.5vw,2rem);margin-bottom:.4rem}
+.vb-tagline{font-size:.9rem;color:var(--cream-muted);line-height:1.5}
+.vb-desc{font-size:.95rem;color:var(--cream-soft);line-height:1.8;margin-bottom:2rem}
+.pizza-grid,.vb-content-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.usp-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
 .usp{background:rgba(232,168,56,.04);border:1px solid rgba(232,168,56,.08);border-radius:14px;padding:1.2rem;text-align:center;transition:all .4s}
 .usp:hover{border-color:rgba(232,168,56,.2)}
 .usp-emoji{font-size:1.8rem;margin-bottom:.5rem}
 .usp h4{font-size:.78rem;font-weight:700;letter-spacing:.06em;margin-bottom:.2rem}
 .usp p{font-size:.72rem;color:var(--cream-muted);line-height:1.4}
-
-/* Ice cream + MRP sub-sections */
-.offerings-sub{margin-top:5rem;padding-top:5rem;border-top:1px solid rgba(232,168,56,.06)}
-.offerings-duo{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem}
-.offer-card{background:var(--surface-2);border:1px solid rgba(232,168,56,.06);border-radius:20px;padding:2.5rem;transition:all .5s cubic-bezier(.22,1,.36,1)}
-.offer-card:hover{transform:translateY(-4px);border-color:rgba(232,168,56,.15);box-shadow:0 16px 40px rgba(0,0,0,.3)}
-.offer-card-icon{font-size:2.5rem;margin-bottom:1rem}
-.offer-card h3{font-family:'DM Serif Display',serif;font-size:1.3rem;margin-bottom:.6rem}
-.offer-card p{font-size:.88rem;color:var(--cream-muted);line-height:1.7;margin-bottom:1rem}
-.offer-card ul{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem}
-.offer-card ul li{font-size:.7rem;font-weight:600;letter-spacing:.06em;background:rgba(232,168,56,.06);border:1px solid rgba(232,168,56,.08);border-radius:20px;padding:.35rem .8rem;color:var(--cream-soft)}
+.vb-menu{margin-top:.5rem}
+.vb-menu-title{font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.vb-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.vb-tags span{font-size:.7rem;font-weight:600;background:rgba(232,168,56,.06);border:1px solid rgba(232,168,56,.08);border-radius:20px;padding:.35rem .85rem;color:var(--cream-soft);transition:all .3s}
+.vb-tags span:hover{border-color:rgba(232,168,56,.25);background:rgba(232,168,56,.1)}
+.vb-doc-link{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;padding:.7rem 1.4rem;background:rgba(232,168,56,.06);border:1px solid rgba(232,168,56,.12);border-radius:12px;font-size:.8rem;font-weight:600;color:var(--gold);transition:all .3s}
+.vb-doc-link:hover{background:rgba(232,168,56,.12);border-color:rgba(232,168,56,.25);transform:translateY(-2px)}
+.pizza-visual{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:var(--brown)}
+.vb-visual{border-radius:24px;overflow:hidden;aspect-ratio:4/3}
+.vb-visual-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:2rem;text-align:center;border-radius:24px}
+.icecream-gradient{background:linear-gradient(135deg,rgba(91,206,250,.08),rgba(45,123,255,.08))}
+.mrp-gradient{background:linear-gradient(135deg,rgba(76,175,80,.08),rgba(46,125,50,.08))}
+.vb-visual-icon{font-size:4rem;margin-bottom:1rem}
+.vb-visual-text{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--cream-muted);line-height:1.4}
 
 /* Product marquee */
-.products-marquee{margin-top:5rem;padding-top:5rem;border-top:1px solid rgba(232,168,56,.06)}
+.products-marquee{margin-top:3rem;padding-top:3rem;border-top:1px solid rgba(232,168,56,.06)}
 .showcase-marquee{overflow:hidden;margin-top:2.5rem}
 .showcase-track{display:flex;gap:1.5rem;animation:scrollMarquee 40s linear infinite;width:max-content}
 .showcase-item{width:170px;height:200px;border-radius:16px;overflow:hidden;flex-shrink:0;border:none;background:transparent;transition:all .4s;position:relative;display:flex;flex-direction:column}
@@ -255,7 +268,7 @@ footer{padding:2rem 6vw;border-top:1px solid rgba(232,168,56,.05);display:flex;j
 
 /* ══════ RESPONSIVE ══════ */
 @media(max-width:1024px){
-.about-grid,.pizza-grid,.contact-grid,.section-split,.mission-grid,.offerings-duo{grid-template-columns:1fr;gap:3rem}
+.about-grid,.pizza-grid,.vb-content-grid,.contact-grid,.section-split,.mission-grid{grid-template-columns:1fr;gap:3rem}
 .team-grid,.legal-grid{grid-template-columns:repeat(2,1fr)}
 .logistics-grid,.why-grid,.steps-grid{grid-template-columns:repeat(2,1fr)}
 .hero-stats-bar{grid-template-columns:repeat(2,1fr)}
@@ -275,6 +288,7 @@ nav{padding:.8rem 5vw}
 .hero-c{padding:0 5vw}.hero-stats-bar{grid-template-columns:1fr 1fr}
 .frow,.usp-cards,.values-grid{grid-template-columns:1fr}
 .logistics-grid{grid-template-columns:1fr}
+.vertical-block{padding:2rem 1.5rem}
 }
 </style>
 </head>
@@ -372,63 +386,98 @@ nav{padding:.8rem 5vw}
 </div>
 </section>
 
-<!-- ═══════════ WHAT WE OFFER (Pizza + Ice Cream + MRP + Products) ═══════════ -->
+<!-- ═══════════ WHAT WE OFFER (3 Equal Business Verticals) ═══════════ -->
 <section id="offerings" class="sec">
 <div class="glow" style="width:400px;height:400px;bottom:-60px;left:-80px;background:var(--hot-red)"></div>
+<div style="text-align:center;margin-bottom:4rem">
+<div class="stag reveal" style="justify-content:center;display:flex">What We Offer</div>
+<h2 class="sh reveal rd1" style="text-align:center">Three verticals. <span class="gold">One partner.</span></h2>
+<p class="sd reveal rd2" style="text-align:center;margin-left:auto;margin-right:auto">Everything your corporate campus needs — from a freshly made pizza counter to a fully stocked tuckshop — set up, staffed, and operated entirely by us.</p>
+</div>
 
-<!-- Big Short Pizza — flagship -->
+<!-- ── VERTICAL 1: BIG SHORT PIZZA ── -->
+<div class="vertical-block reveal" id="v-pizza">
+<div class="vb-header"><div class="vb-badge pizza-bg">&#127829;</div><div class="vb-label">Vertical 01</div><h3 class="vb-title">Big Short Pizza</h3><p class="vb-tagline">Our own brand — fresh dough, made daily, never frozen.</p></div>
 <div class="pizza-grid">
 <div>
-<div class="stag reveal">Flagship Brand</div>
-<h2 class="sh reveal rd1">Big Short Pizza —<br><span class="gold">Fresh dough, daily.</span></h2>
-<p class="sd reveal rd2">Unlike chains that rely on frozen, pre-made dough shipped from central kitchens, Big Short Pizza prepares fresh dough in-house every single day. That's why companies choose us — better taste, fresher ingredients, and a counter that feels like part of their campus.</p>
+<p class="vb-desc">Unlike chains that rely on frozen, pre-made dough shipped from central kitchens, Big Short Pizza prepares fresh dough in-house every single day at each campus. That's why companies choose us over the alternatives — better taste, fresher ingredients, and a counter that feels like part of their campus, not a franchise.</p>
 <div class="usp-cards">
-<div class="usp reveal rd3"><div class="usp-emoji">&#129374;</div><h4>Fresh Dough Daily</h4><p>Never frozen. Prepared in-house every morning before service.</p></div>
-<div class="usp reveal rd4"><div class="usp-emoji">&#127860;</div><h4>Full Menu</h4><p>Pizzas, burgers, pastas, rolls, sides & fresh mojitos.</p></div>
-<div class="usp reveal rd5"><div class="usp-emoji">&#128205;</div><h4>On-Campus</h4><p>Dedicated counter inside your corporate cafeteria.</p></div>
-<div class="usp reveal rd6"><div class="usp-emoji">&#128170;</div><h4>Our Brand, Your Campus</h4><p>We own, staff & operate — zero hassle for the company.</p></div>
+<div class="usp"><div class="usp-emoji">&#129374;</div><h4>Fresh Dough Daily</h4><p>Never frozen. Prepared in-house every morning before service.</p></div>
+<div class="usp"><div class="usp-emoji">&#127860;</div><h4>Full Menu</h4><p>Pizzas, burgers, pastas, rolls, sides & fresh mojitos.</p></div>
+<div class="usp"><div class="usp-emoji">&#128205;</div><h4>On-Campus Counter</h4><p>Dedicated branded counter inside your corporate cafeteria.</p></div>
+<div class="usp"><div class="usp-emoji">&#128170;</div><h4>Zero Hassle</h4><p>We own, staff & operate — the company just provides the space.</p></div>
+</div>
+<div class="vb-menu">
+<div class="vb-menu-title">What's on the menu</div>
+<div class="vb-tags"><span>Margherita</span><span>Farmhouse</span><span>Paneer Tikka</span><span>Chicken Pepperoni</span><span>Veg Burger</span><span>Chicken Burger</span><span>Pasta</span><span>Rolls</span><span>Garlic Bread</span><span>Mojitos</span><span>Sides</span></div>
 </div>
 </div>
-<div class="pizza-visual reveal rd2" style="background:var(--black)">
+<div class="pizza-visual" style="background:var(--black)">
 <video width="100%" height="100%" style="width:100%;height:100%;object-fit:cover;border-radius:24px;" controls playsinline preload="metadata">
 <source src="videos/dough-making.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 </div>
 </div>
-
-<!-- Ice Cream + MRP — other offerings -->
-<div class="offerings-sub">
-<div style="text-align:center;margin-bottom:.5rem">
-<div class="stag reveal" style="justify-content:center;display:flex">More Than Just Pizza</div>
-<h2 class="sh reveal rd1" style="text-align:center">Ice cream counters &amp; <span class="gold">MRP tuckshops</span>.</h2>
-<p class="sd reveal rd2" style="text-align:center;margin-left:auto;margin-right:auto">Alongside Big Short Pizza, we run fully managed ice cream parlours and tuckshop counters stocked with India's leading FMCG brands.</p>
-</div>
-<div class="offerings-duo">
-<div class="offer-card reveal rd3">
-<div class="offer-card-icon">&#127846;</div>
-<h3>Ice Cream Counters</h3>
-<p>From Amul Tricones and scooping counters to kulfi and seasonal specials — we set up and operate dedicated ice cream stations that corporate employees love. Temperature-controlled freezers, daily restocking, and trained staff included.</p>
-<ul>
-<li>Amul</li><li>Tricones</li><li>Kulfi</li><li>Scooping</li><li>Seasonal Specials</li>
-</ul>
-</div>
-<div class="offer-card reveal rd4">
-<div class="offer-card-icon">&#127851;</div>
-<h3>MRP Product Tuckshops</h3>
-<p>A fully stocked grab-and-go counter inside your campus cafeteria. Biscuits, chips, health bars, chocolates, beverages — everything your employees need, at MRP, restocked daily. No vending machine downtime, no stale inventory.</p>
-<ul>
-<li>Chocolates</li><li>Chips & Snacks</li><li>Health Bars</li><li>Beverages</li><li>Biscuits</li><li>Protein Bars</li>
-</ul>
-</div>
-</div>
 </div>
 
-<!-- Product Marquee — what we stock -->
+<!-- ── VERTICAL 2: ICE CREAM COUNTERS ── -->
+<div class="vertical-block reveal" id="v-icecream">
+<div class="vb-header"><div class="vb-badge icecream-bg">&#127846;</div><div class="vb-label">Vertical 02</div><h3 class="vb-title">Ice Cream Counters</h3><p class="vb-tagline">Amul-partnered scooping stations, Tricones, Kulfis & more.</p></div>
+<div class="vb-content-grid">
+<div>
+<p class="vb-desc">From Amul Tricones and scooping counters to kulfi and seasonal specials — we set up and operate dedicated ice cream stations that corporate employees love. Temperature-controlled freezers, daily restocking, and trained staff included. Every counter maintains the cold chain from our warehouse to the scoop.</p>
+<div class="usp-cards">
+<div class="usp"><div class="usp-emoji">&#129398;</div><h4>Temperature Controlled</h4><p>Commercial-grade freezers maintained at optimal temperature 24/7.</p></div>
+<div class="usp"><div class="usp-emoji">&#127846;</div><h4>Scooping Counter</h4><p>Live scooping with multiple flavors, cones, and cups on demand.</p></div>
+<div class="usp"><div class="usp-emoji">&#128230;</div><h4>Daily Restocking</h4><p>Fresh inventory delivered every morning from cold storage.</p></div>
+<div class="usp"><div class="usp-emoji">&#9889;</div><h4>Seasonal Specials</h4><p>Rotating flavors and limited editions to keep employees excited.</p></div>
+</div>
+<div class="vb-menu">
+<div class="vb-menu-title">What we serve</div>
+<div class="vb-tags"><span>Amul Tricones</span><span>Scooping (12+ flavors)</span><span>Kulfi</span><span>Ice Cream Sandwiches</span><span>Sundaes</span><span>Amul Cones</span><span>Seasonal Specials</span><span>Party Packs</span></div>
+</div>
+</div>
+<div class="vb-visual">
+<div class="vb-visual-inner icecream-gradient">
+<div class="vb-visual-icon">&#127846;</div>
+<div class="vb-visual-text">Amul Partnered<br>Ice Cream Counters</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ── VERTICAL 3: MRP PRODUCT TUCKSHOPS ── -->
+<div class="vertical-block reveal" id="v-mrp">
+<div class="vb-header"><div class="vb-badge mrp-bg">&#127851;</div><div class="vb-label">Vertical 03</div><h3 class="vb-title">MRP Product Tuckshops</h3><p class="vb-tagline">A fully stocked grab-and-go counter — 10+ FMCG brands at MRP.</p></div>
+<div class="vb-content-grid">
+<div>
+<p class="vb-desc">A fully stocked grab-and-go counter inside your campus cafeteria. Biscuits, chips, health bars, chocolates, beverages — everything your employees need, sold at MRP, restocked daily. No vending machine downtime, no stale inventory, no markup. We manage procurement, display, and daily replenishment.</p>
+<div class="usp-cards">
+<div class="usp"><div class="usp-emoji">&#128176;</div><h4>All at MRP</h4><p>No markup. Every product sold at printed MRP — employees get fair prices.</p></div>
+<div class="usp"><div class="usp-emoji">&#128230;</div><h4>10+ Brands</h4><p>ITC, Cadbury, Amul, Yoga Bar, Paper Boat, Max Protein & more.</p></div>
+<div class="usp"><div class="usp-emoji">&#128337;</div><h4>No Downtime</h4><p>Unlike vending machines — no jams, no errors, no expired stock.</p></div>
+<div class="usp"><div class="usp-emoji">&#129489;</div><h4>Staffed Counter</h4><p>A real person at the counter, not a machine. Faster, friendlier, better.</p></div>
+</div>
+<div class="vb-menu">
+<div class="vb-menu-title">Product categories</div>
+<div class="vb-tags"><span>Chocolates</span><span>Chips & Snacks</span><span>Biscuits</span><span>Health Bars</span><span>Protein Bars</span><span>Beverages</span><span>Chikki & Sweets</span><span>Veggie Chips</span><span>Instant Noodles</span></div>
+</div>
+</div>
+<div class="vb-visual">
+<div class="vb-visual-inner mrp-gradient">
+<div class="vb-visual-icon">&#127851;</div>
+<div class="vb-visual-text">10+ Brands<br>Daily Restocked</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Product Marquee — all brands we stock -->
 <div class="products-marquee">
 <div style="text-align:center;margin-bottom:.5rem">
 <div class="stag reveal" style="justify-content:center;display:flex">What We Stock &amp; Serve</div>
-<h2 class="sh reveal rd1" style="text-align:center">Products at our <span class="gold">tuckshop counters</span>.</h2>
+<h2 class="sh reveal rd1" style="text-align:center">Products across our <span class="gold">counters</span>.</h2>
 </div>
 <div class="showcase-marquee"><div class="showcase-track">
 <div class="showcase-item"><div class="si-img-wrap"><img src="images/products/big-short-pizza.png" alt="Big Short Pizza" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&h=200&fit=crop&q=80'"></div><div class="si-label">Big Short Pizza</div></div>
