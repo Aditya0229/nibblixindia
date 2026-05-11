@@ -16,6 +16,7 @@ body{font-family:'Sora',sans-serif;background:var(--black);color:var(--cream);ov
 .gold{color:var(--gold)}.red{color:var(--hot-red)}
 img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
 
+/* ══════ LOADER ══════ */
 #loader{position:fixed;inset:0;z-index:10000;background:var(--black);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s}
 #loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .loader-logo{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--gold);letter-spacing:.12em;margin-bottom:2rem;text-transform:uppercase}
@@ -23,6 +24,7 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
 .loader-bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--hot-red));border-radius:4px;animation:loadBar 2s ease-in-out forwards}
 @keyframes loadBar{to{width:100%}}
 
+/* ══════ NAV ══════ */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 5vw;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(10,9,8,.65);border-bottom:1px solid rgba(232,168,56,.06);transition:all .4s}
 nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .nav-logo{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
@@ -39,11 +41,12 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .nav-social a:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
 .mob-tog{display:none;background:none;border:none;color:var(--gold);font-size:1.5rem;cursor:pointer}
 
+/* ══════ HERO ══════ */
 #hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;background:var(--black)}
 .hero-bg-gradient{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 70% 40%,rgba(232,168,56,.06) 0%,transparent 60%),radial-gradient(ellipse at 30% 70%,rgba(230,57,70,.04) 0%,transparent 50%)}
 .hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(150deg,rgba(10,9,8,.95) 0%,rgba(10,9,8,.6) 45%,rgba(10,9,8,.8) 100%)}
 .hero-c{position:relative;z-index:2;padding:0 6vw;max-width:950px}
-.hero-company{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,4.2vw,3.8rem);font-weight:400;line-height:1.1;letter-spacing:.06em;color:var(--gold);margin-bottom:.8rem;opacity:0;transform:translateY(30px);animation:fadeUp .7s 2.2s forwards;text-transform:uppercase;white-space:nowrap}
+.hero-company{font-family:'DM Serif Display',serif;font-size:clamp(1.5rem,4.2vw,3.8rem);font-weight:400;line-height:1.15;letter-spacing:.06em;color:var(--gold);margin-bottom:.8rem;opacity:0;transform:translateY(30px);animation:fadeUp .7s 2.2s forwards;text-transform:uppercase;word-wrap:break-word;overflow-wrap:break-word}
 .hero-subtitle{font-family:'DM Serif Display',serif;font-size:clamp(1.3rem,2.8vw,2.2rem);font-weight:400;line-height:1.25;color:var(--cream);margin-bottom:2rem;opacity:0;transform:translateY(30px);animation:fadeUp .7s 2.5s forwards}
 .hero-desc{font-size:1rem;line-height:1.8;color:var(--cream-soft);max-width:560px;margin-bottom:2.5rem;opacity:0;transform:translateY(30px);animation:fadeUp .7s 2.7s forwards}
 .hero-desc strong{color:var(--gold);font-weight:600}
@@ -53,38 +56,11 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .btn-ghost{padding:.95rem 2.2rem;background:transparent;border:1.5px solid rgba(255,248,236,.18);border-radius:60px;color:var(--cream);font-family:'Sora',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .4s}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 
-/* ══════ 3D FLOATING IMAGES — CINEMATIC BACKGROUND ══════ */
-.hero-floats{
-  position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
-  perspective:1000px;
-  transform-style:preserve-3d;
-}
-.float-img{
-  position:absolute;
-  border-radius:0;
-  border:none !important;
-  box-shadow:none !important;
-  background:none !important;
-  outline:none;
-  overflow:visible;
-  opacity:0;
-  transform-style:preserve-3d;
-}
-.float-img::before,.float-img::after{display:none !important}
-.float-img img{
-  width:100%;height:100%;object-fit:contain;
-  border-radius:0;
-  border:none !important;
-  outline:none;
-  box-shadow:none;
-  background:none !important;
-  mix-blend-mode:screen;
-  opacity:.45;
-  filter:saturate(.7) brightness(.85);
-  transition:none;
-}
-
-/* ── Large cinematic sizes spread across full hero ── */
+/* ══════ 3D FLOATING IMAGES ══════ */
+.hero-floats{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;perspective:1000px;transform-style:preserve-3d}
+.float-img{position:absolute;border-radius:0;border:none!important;box-shadow:none!important;background:none!important;outline:none;overflow:visible;opacity:0;transform-style:preserve-3d}
+.float-img::before,.float-img::after{display:none!important}
+.float-img img{width:100%;height:100%;object-fit:contain;border-radius:0;border:none!important;outline:none;box-shadow:none;background:none!important;mix-blend-mode:screen;opacity:.45;filter:saturate(.7) brightness(.85);transition:none}
 .fi1{width:320px;height:320px;top:-2%;right:2%;animation:floatIn 1.5s 2.4s forwards,drift1 18s 3.9s ease-in-out infinite}
 .fi2{width:280px;height:280px;top:42%;right:5%;animation:floatIn 1.5s 2.7s forwards,drift2 22s 4.2s ease-in-out infinite}
 .fi3{width:240px;height:240px;top:18%;right:-3%;animation:floatIn 1.5s 3s forwards,drift3 16s 4.5s ease-in-out infinite}
@@ -93,33 +69,11 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .fi6{width:260px;height:260px;top:32%;right:25%;animation:floatIn 1.5s 3.6s forwards,drift2 21s 5.1s ease-in-out infinite}
 .fi7{width:200px;height:200px;top:70%;right:20%;animation:floatIn 1.5s 3.8s forwards,drift3 17s 5.3s ease-in-out infinite}
 .fi8{width:270px;height:270px;top:8%;right:38%;animation:floatIn 1.5s 4s forwards,drift4 23s 5.5s ease-in-out infinite}
-
 @keyframes floatIn{to{opacity:1}}
-
-/* Slow cinematic drifts with 3D rotation */
-@keyframes drift1{
-  0%,100%{transform:translate(0,0) rotateY(0deg) rotateX(0deg) scale(1)}
-  25%{transform:translate(20px,-30px) rotateY(12deg) rotateX(-6deg) scale(1.04)}
-  50%{transform:translate(-10px,-50px) rotateY(-8deg) rotateX(4deg) scale(0.98)}
-  75%{transform:translate(15px,-20px) rotateY(10deg) rotateX(-3deg) scale(1.02)}
-}
-@keyframes drift2{
-  0%,100%{transform:translate(0,0) rotateY(0deg) rotateX(0deg) scale(1)}
-  20%{transform:translate(-25px,-20px) rotateY(-10deg) rotateX(8deg) scale(1.03)}
-  50%{transform:translate(15px,-45px) rotateY(14deg) rotateX(-5deg) scale(0.96)}
-  80%{transform:translate(-10px,-15px) rotateY(-6deg) rotateX(3deg) scale(1.01)}
-}
-@keyframes drift3{
-  0%,100%{transform:translate(0,0) rotateY(0deg) rotateX(0deg) scale(1)}
-  33%{transform:translate(30px,-35px) rotateY(15deg) rotateX(-8deg) scale(1.06)}
-  66%{transform:translate(-20px,-25px) rotateY(-12deg) rotateX(6deg) scale(0.95)}
-}
-@keyframes drift4{
-  0%,100%{transform:translate(0,0) rotateY(0deg) rotateX(0deg) scale(1)}
-  30%{transform:translate(-15px,-40px) rotateY(-14deg) rotateX(10deg) scale(1.05)}
-  60%{transform:translate(25px,-55px) rotateY(12deg) rotateX(-7deg) scale(0.97)}
-  85%{transform:translate(-8px,-10px) rotateY(-4deg) rotateX(2deg) scale(1.01)}
-}
+@keyframes drift1{0%,100%{transform:translate(0,0) rotateY(0deg) rotateX(0deg) scale(1)}25%{transform:translate(20px,-30px) rotateY(12deg) rotateX(-6deg) scale(1.04)}50%{transform:translate(-10px,-50px) rotateY(-8deg) rotateX(4deg) scale(0.98)}75%{transform:translate(15px,-20px) rotateY(10deg) rotateX(-3deg) scale(1.02)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) rotateY(0deg) rotateX(0deg) scale(1)}20%{transform:translate(-25px,-20px) rotateY(-10deg) rotateX(8deg) scale(1.03)}50%{transform:translate(15px,-45px) rotateY(14deg) rotateX(-5deg) scale(0.96)}80%{transform:translate(-10px,-15px) rotateY(-6deg) rotateX(3deg) scale(1.01)}}
+@keyframes drift3{0%,100%{transform:translate(0,0) rotateY(0deg) rotateX(0deg) scale(1)}33%{transform:translate(30px,-35px) rotateY(15deg) rotateX(-8deg) scale(1.06)}66%{transform:translate(-20px,-25px) rotateY(-12deg) rotateX(6deg) scale(0.95)}}
+@keyframes drift4{0%,100%{transform:translate(0,0) rotateY(0deg) rotateX(0deg) scale(1)}30%{transform:translate(-15px,-40px) rotateY(-14deg) rotateX(10deg) scale(1.05)}60%{transform:translate(25px,-55px) rotateY(12deg) rotateX(-7deg) scale(0.97)}85%{transform:translate(-8px,-10px) rotateY(-4deg) rotateX(2deg) scale(1.01)}}
 
 .hero-stats-bar{position:absolute;bottom:0;left:0;right:0;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(232,168,56,.08);background:rgba(10,9,8,.7);backdrop-filter:blur(16px)}
 .hero-stat{padding:1.8rem 2rem;text-align:center;border-right:1px solid rgba(232,168,56,.06);opacity:0;animation:fadeUp .6s forwards}
@@ -128,6 +82,7 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .hero-stat-n{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--gold)}
 .hero-stat-l{font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-muted);margin-top:.3rem}
 
+/* ══════ SHARED ══════ */
 .sec{padding:7rem 6vw;position:relative}
 .stag{font-size:.62rem;font-weight:700;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem}
 .sh{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:400;line-height:1.15;margin-bottom:.8rem}
@@ -138,6 +93,10 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .glow{position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none;opacity:.1}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 
+/* ══════ SECTION DIVIDER ══════ */
+.sec-divider{width:60px;height:2px;background:linear-gradient(90deg,var(--gold),var(--hot-red));margin:0 auto;border-radius:2px}
+
+/* ══════ ABOUT + MISSION (combined) ══════ */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
 .about-text p{font-size:1rem;color:var(--cream-soft);line-height:1.85;margin-bottom:1.5rem}
 .about-text .hl{color:var(--gold);font-weight:600}
@@ -151,7 +110,8 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .v-card h3{font-family:'DM Serif Display',serif;font-size:1.05rem;margin-bottom:.3rem}
 .v-card p{font-size:.82rem;color:var(--cream-muted);line-height:1.5}
 
-#mission{background:var(--surface-2);overflow:hidden}
+/* Mission + Values sub-block */
+.mission-block{margin-top:5rem;padding-top:5rem;border-top:1px solid rgba(232,168,56,.06)}
 .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
 .mission-left .mission-quote{font-family:'DM Serif Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);line-height:1.4;font-style:italic;margin-bottom:1.5rem}
 .mission-left .mission-body{font-size:.95rem;color:var(--cream-soft);line-height:1.8}
@@ -162,14 +122,10 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .val-card h4{font-family:'DM Serif Display',serif;font-size:.95rem;margin-bottom:.3rem}
 .val-card p{font-size:.75rem;color:var(--cream-muted);line-height:1.5}
 
-#pizza{background:var(--surface);overflow:hidden}
+/* ══════ WHAT WE OFFER (Pizza + Products combined) ══════ */
+#offerings{background:var(--surface);overflow:hidden}
 .pizza-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
 .pizza-visual{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:var(--brown)}
-.pizza-visual-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:2rem;text-align:center;background:linear-gradient(135deg,rgba(232,168,56,.08),rgba(196,30,58,.08))}
-.pizza-play{width:80px;height:80px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;cursor:pointer;transition:all .4s;box-shadow:0 8px 30px rgba(232,168,56,.3)}
-.pizza-play:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(232,168,56,.4)}
-.pizza-play svg{width:24px;height:24px;fill:var(--black);margin-left:3px}
-.pizza-visual-label{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-muted)}
 .usp-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
 .usp{background:rgba(232,168,56,.04);border:1px solid rgba(232,168,56,.08);border-radius:14px;padding:1.2rem;text-align:center;transition:all .4s}
 .usp:hover{border-color:rgba(232,168,56,.2)}
@@ -177,31 +133,71 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .usp h4{font-size:.78rem;font-weight:700;letter-spacing:.06em;margin-bottom:.2rem}
 .usp p{font-size:.72rem;color:var(--cream-muted);line-height:1.4}
 
-/* ══════ PRODUCT SHOWCASE — TRANSPARENT ══════ */
-#products-showcase{overflow:hidden;position:relative;padding:5rem 6vw}
-.showcase-marquee{overflow:hidden}
+/* Ice cream + MRP sub-sections */
+.offerings-sub{margin-top:5rem;padding-top:5rem;border-top:1px solid rgba(232,168,56,.06)}
+.offerings-duo{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem}
+.offer-card{background:var(--surface-2);border:1px solid rgba(232,168,56,.06);border-radius:20px;padding:2.5rem;transition:all .5s cubic-bezier(.22,1,.36,1)}
+.offer-card:hover{transform:translateY(-4px);border-color:rgba(232,168,56,.15);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.offer-card-icon{font-size:2.5rem;margin-bottom:1rem}
+.offer-card h3{font-family:'DM Serif Display',serif;font-size:1.3rem;margin-bottom:.6rem}
+.offer-card p{font-size:.88rem;color:var(--cream-muted);line-height:1.7;margin-bottom:1rem}
+.offer-card ul{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem}
+.offer-card ul li{font-size:.7rem;font-weight:600;letter-spacing:.06em;background:rgba(232,168,56,.06);border:1px solid rgba(232,168,56,.08);border-radius:20px;padding:.35rem .8rem;color:var(--cream-soft)}
+
+/* Product marquee */
+.products-marquee{margin-top:5rem;padding-top:5rem;border-top:1px solid rgba(232,168,56,.06)}
+.showcase-marquee{overflow:hidden;margin-top:2.5rem}
 .showcase-track{display:flex;gap:1.5rem;animation:scrollMarquee 40s linear infinite;width:max-content}
-.showcase-item{
-  width:170px;height:200px;border-radius:16px;overflow:hidden;flex-shrink:0;
-  border:none;
-  background:transparent;
-  transition:all .4s;position:relative;display:flex;flex-direction:column;
-}
+.showcase-item{width:170px;height:200px;border-radius:16px;overflow:hidden;flex-shrink:0;border:none;background:transparent;transition:all .4s;position:relative;display:flex;flex-direction:column}
 .showcase-item:hover{transform:scale(1.08)}
-.si-img-wrap{
-  flex:1;display:flex;align-items:center;justify-content:center;padding:10px;
-  background:rgba(255,255,255,.06);
-  border-radius:16px 16px 0 0;overflow:hidden;
-}
-.si-img-wrap img{
-  max-width:90%;max-height:90%;object-fit:contain;transition:transform .4s;
-  mix-blend-mode:multiply;
-  filter:brightness(1.1);
-}
+.si-img-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:10px;background:rgba(255,255,255,.06);border-radius:16px 16px 0 0;overflow:hidden}
+.si-img-wrap img{max-width:90%;max-height:90%;object-fit:contain;transition:transform .4s;mix-blend-mode:multiply;filter:brightness(1.1)}
 .showcase-item:hover .si-img-wrap img{transform:scale(1.08)}
 .si-label{padding:.55rem;text-align:center;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-soft);background:transparent}
 @keyframes scrollMarquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
+/* ══════ WHY CHOOSE US ══════ */
+#why-us{background:var(--surface-2);overflow:hidden}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem}
+.why-card{background:rgba(232,168,56,.03);border:1px solid rgba(232,168,56,.06);border-radius:18px;padding:2rem 1.5rem;text-align:center;transition:all .5s cubic-bezier(.22,1,.36,1)}
+.why-card:hover{transform:translateY(-5px);border-color:rgba(232,168,56,.18);box-shadow:0 16px 40px rgba(0,0,0,.25)}
+.why-icon{font-size:2.2rem;margin-bottom:.8rem}
+.why-card h4{font-family:'DM Serif Display',serif;font-size:1rem;margin-bottom:.5rem}
+.why-card p{font-size:.8rem;color:var(--cream-muted);line-height:1.6}
+
+/* ══════ PARTNERS & BRANDS ══════ */
+#clients{background:var(--surface)}
+.section-split{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.split-block h3{font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:.5rem}
+.split-block .split-desc{font-size:.85rem;color:var(--cream-muted);line-height:1.6;margin-bottom:1.8rem}
+.client-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
+.brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.client-chip,.brand-chip{background:rgba(232,168,56,.04);border:1px solid rgba(232,168,56,.06);border-radius:12px;padding:1rem .8rem;text-align:center;transition:all .4s;cursor:default}
+.client-chip:hover,.brand-chip:hover{border-color:rgba(232,168,56,.2);transform:translateY(-2px)}
+.chip-name{font-size:.78rem;font-weight:600}.chip-sub{font-size:.62rem;color:var(--cream-muted);margin-top:.2rem}
+
+/* ══════ OUR PRESENCE (Branches) ══════ */
+.branch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.branch-card{border-radius:18px;overflow:hidden;position:relative;height:280px;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.branch-card:hover{transform:translateY(-4px)}
+.branch-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.branch-card:hover img{transform:scale(1.05)}
+.branch-overlay{position:absolute;inset:0;background:linear-gradient(transparent 25%,rgba(10,9,8,.9));z-index:1;padding:1.8rem;display:flex;flex-direction:column;justify-content:flex-end}
+.branch-tag{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.branch-name{font-family:'DM Serif Display',serif;font-size:1.15rem}
+.branch-addr{font-size:.8rem;color:var(--cream-muted);margin-top:.2rem}
+
+/* ══════ HOW IT WORKS ══════ */
+#how-it-works{background:var(--surface-2);overflow:hidden}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem}
+.step-card{position:relative;background:rgba(232,168,56,.03);border:1px solid rgba(232,168,56,.06);border-radius:18px;padding:2rem 1.5rem;text-align:center;transition:all .5s cubic-bezier(.22,1,.36,1)}
+.step-card:hover{transform:translateY(-4px);border-color:rgba(232,168,56,.15)}
+.step-num{font-family:'DM Serif Display',serif;font-size:2.5rem;color:rgba(232,168,56,.15);position:absolute;top:.8rem;right:1rem}
+.step-icon{font-size:2rem;margin-bottom:.8rem}
+.step-card h4{font-family:'DM Serif Display',serif;font-size:1rem;margin-bottom:.4rem}
+.step-card p{font-size:.78rem;color:var(--cream-muted);line-height:1.6}
+
+/* ══════ LOGISTICS ══════ */
 #logistics{background:var(--surface);overflow:hidden}
 .logistics-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem}
 .log-card{background:var(--surface-2);border:1px solid rgba(232,168,56,.06);border-radius:18px;overflow:hidden;transition:all .5s cubic-bezier(.22,1,.36,1)}
@@ -214,29 +210,10 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .log-body h3{font-family:'DM Serif Display',serif;font-size:1.1rem;margin-bottom:.5rem}
 .log-body p{font-size:.82rem;color:var(--cream-muted);line-height:1.6}
 
-#clients{background:var(--surface-2)}
-.section-split{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
-.split-block h3{font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:.5rem}
-.split-block .split-desc{font-size:.85rem;color:var(--cream-muted);line-height:1.6;margin-bottom:1.8rem}
-.client-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
-.brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
-.client-chip,.brand-chip{background:rgba(232,168,56,.04);border:1px solid rgba(232,168,56,.06);border-radius:12px;padding:1rem .8rem;text-align:center;transition:all .4s;cursor:default}
-.client-chip:hover,.brand-chip:hover{border-color:rgba(232,168,56,.2);transform:translateY(-2px)}
-.chip-name{font-size:.78rem;font-weight:600}.chip-sub{font-size:.62rem;color:var(--cream-muted);margin-top:.2rem}
-
-.branch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
-.branch-card{border-radius:18px;overflow:hidden;position:relative;height:260px;transition:transform .5s cubic-bezier(.22,1,.36,1)}
-.branch-card:hover{transform:translateY(-4px)}
-.branch-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.branch-card:hover img{transform:scale(1.05)}
-.branch-overlay{position:absolute;inset:0;background:linear-gradient(transparent 25%,rgba(10,9,8,.9));z-index:1;padding:1.8rem;display:flex;flex-direction:column;justify-content:flex-end}
-.branch-tag{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
-.branch-name{font-family:'DM Serif Display',serif;font-size:1.15rem}
-.branch-addr{font-size:.8rem;color:var(--cream-muted);margin-top:.2rem}
-
-#team{background:var(--surface)}
+/* ══════ TEAM ══════ */
+#team{background:var(--surface-2)}
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.tcard{background:var(--surface-2);border:1px solid rgba(232,168,56,.05);border-radius:18px;padding:2.2rem 1.4rem 1.8rem;text-align:center;transition:all .5s cubic-bezier(.22,1,.36,1)}
+.tcard{background:var(--surface);border:1px solid rgba(232,168,56,.05);border-radius:18px;padding:2.2rem 1.4rem 1.8rem;text-align:center;transition:all .5s cubic-bezier(.22,1,.36,1)}
 .tcard:hover{transform:translateY(-6px);border-color:rgba(232,168,56,.15);box-shadow:0 16px 45px rgba(0,0,0,.3)}
 .tcard-photo{width:90px;height:90px;border-radius:50%;margin:0 auto 1rem;overflow:hidden;border:2.5px solid rgba(232,168,56,.12);box-shadow:0 6px 20px rgba(0,0,0,.3)}
 .tcard-photo img{width:100%;height:100%;object-fit:cover;object-position:top}
@@ -244,6 +221,7 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .tcard-role{font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
 .tcard-bio{font-size:.8rem;color:var(--cream-muted);line-height:1.5}
 
+/* ══════ LEGAL ══════ */
 #legal{background:var(--surface)}
 .legal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .lcard{background:var(--surface-2);border:1px solid rgba(232,168,56,.05);border-radius:14px;padding:1.4rem;display:flex;align-items:center;gap:.8rem;cursor:pointer;transition:all .4s}
@@ -252,6 +230,7 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .lcard-name{font-weight:600;font-size:.82rem;margin-bottom:.1rem}
 .lcard-type{font-size:.65rem;color:var(--cream-muted);letter-spacing:.06em;text-transform:uppercase}
 
+/* ══════ CONTACT ══════ */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .contact-big{font-family:'DM Serif Display',serif;font-size:clamp(1.7rem,2.8vw,2.4rem);line-height:1.2;margin-bottom:1.5rem}
 .contact-items{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
@@ -267,20 +246,22 @@ nav.scrolled{padding:.7rem 5vw;background:rgba(10,9,8,.92)}
 .btn-sub{width:100%;padding:.9rem;background:linear-gradient(135deg,var(--gold),var(--hot-red));border:none;border-radius:60px;color:#fff;font-family:'Sora',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .4s;margin-top:.3rem}
 .btn-sub:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(232,168,56,.25)}
 
+/* ══════ FOOTER ══════ */
 footer{padding:2rem 6vw;border-top:1px solid rgba(232,168,56,.05);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
 .fc{font-size:.7rem;color:var(--cream-muted)}.fc a{color:var(--gold)}
 .fsocial{display:flex;gap:.8rem}
 .fsocial a{width:32px;height:32px;border-radius:50%;border:1px solid rgba(232,168,56,.1);display:flex;align-items:center;justify-content:center;color:var(--cream-soft);font-size:.7rem;transition:all .3s}
 .fsocial a:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
 
+/* ══════ RESPONSIVE ══════ */
 @media(max-width:1024px){
-.about-grid,.pizza-grid,.contact-grid,.section-split,.mission-grid{grid-template-columns:1fr;gap:3rem}
+.about-grid,.pizza-grid,.contact-grid,.section-split,.mission-grid,.offerings-duo{grid-template-columns:1fr;gap:3rem}
 .team-grid,.legal-grid{grid-template-columns:repeat(2,1fr)}
-.logistics-grid{grid-template-columns:1fr}
+.logistics-grid,.why-grid,.steps-grid{grid-template-columns:repeat(2,1fr)}
 .hero-stats-bar{grid-template-columns:repeat(2,1fr)}
 .hero-stat:nth-child(2){border-right:none}
 .hero-stat:nth-child(3),.hero-stat:nth-child(4){border-top:1px solid rgba(232,168,56,.06)}
-.pillars,.brand-grid{grid-template-columns:repeat(2,1fr)}
+.brand-grid{grid-template-columns:repeat(2,1fr)}
 .float-img{display:none}
 }
 @media(max-width:768px){
@@ -289,22 +270,30 @@ nav{padding:.8rem 5vw}
 .nav-links.open{display:flex}
 .mob-tog{display:block}.nav-social{display:none}
 .sec{padding:4.5rem 5vw}
-.branch-grid,.team-grid,.legal-grid,.client-grid{grid-template-columns:1fr}
+.branch-grid,.team-grid,.legal-grid,.client-grid,.why-grid,.steps-grid{grid-template-columns:1fr}
 .brand-grid{grid-template-columns:repeat(2,1fr)}
 .hero-c{padding:0 5vw}.hero-stats-bar{grid-template-columns:1fr 1fr}
 .frow,.usp-cards,.values-grid{grid-template-columns:1fr}
+.logistics-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 <div id="loader"><div class="loader-logo">Nibblix India</div><div class="loader-bar-wrap"><div class="loader-bar"></div></div></div>
 
+<!-- ═══════════ NAV ═══════════ -->
 <nav id="mn">
 <a href="#" class="nav-logo">NIBBLIX<span>INDIA PVT LTD</span></a>
 <ul class="nav-links" id="navLinks">
-<li><a href="#about">About</a></li><li><a href="#mission">Mission</a></li><li><a href="#pizza">Big Short Pizza</a></li>
-<li><a href="#clients">Partners</a></li><li><a href="#logistics">Logistics</a></li><li><a href="#branches">Branches</a></li><li><a href="#team">Team</a></li>
-<li><a href="#legal">Legal</a></li><li><a href="#contact" class="nav-cta">Contact</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#offerings">What We Offer</a></li>
+<li><a href="#why-us">Why Us</a></li>
+<li><a href="#clients">Partners</a></li>
+<li><a href="#branches">Campuses</a></li>
+<li><a href="#how-it-works">How It Works</a></li>
+<li><a href="#team">Team</a></li>
+<li><a href="#legal">Legal</a></li>
+<li><a href="#contact" class="nav-cta">Contact</a></li>
 </ul>
 <div class="nav-social">
 <a href="https://www.instagram.com/nibblix_india_pvt_ltd?igsh=NTc4MTIwNjQ2YQ==" target="_blank">IG</a>
@@ -313,6 +302,7 @@ nav{padding:.8rem 5vw}
 <button class="mob-tog" id="mobToggle">&#9776;</button>
 </nav>
 
+<!-- ═══════════ HERO ═══════════ -->
 <section id="hero">
 <div class="hero-bg-gradient"></div>
 <div class="hero-ov"></div>
@@ -331,7 +321,7 @@ nav{padding:.8rem 5vw}
 <p class="hero-subtitle">Cafeteria &amp; Tuckshop Solutions<br>for <span class="gold">Corporate India</span></p>
 <p class="hero-desc">We operate <strong>Big Short Pizza</strong> counters, ice cream parlours, and <strong>MRP product tuckshops</strong> inside India's leading corporate campuses — backed by fresh daily preparation, hygiene-first standards, and reliable FMCG distribution.</p>
 <div class="hero-btns">
-<a href="#about" class="btn-gold" onclick="event.preventDefault();document.getElementById('about').scrollIntoView({behavior:'smooth'})">What We Do</a>
+<a href="#offerings" class="btn-gold" onclick="event.preventDefault();document.getElementById('offerings').scrollIntoView({behavior:'smooth'})">Explore Our Offerings</a>
 <a href="#contact" class="btn-ghost" onclick="event.preventDefault();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Partner With Us</a>
 </div>
 </div>
@@ -343,6 +333,7 @@ nav{padding:.8rem 5vw}
 </div>
 </section>
 
+<!-- ═══════════ ABOUT + MISSION (Combined) ═══════════ -->
 <section id="about" class="sec">
 <div class="glow" style="width:500px;height:500px;top:-80px;right:-120px;background:var(--gold)"></div>
 <div class="about-grid">
@@ -359,35 +350,38 @@ nav{padding:.8rem 5vw}
 <div class="v-card reveal rd4"><div class="v-icon mrp">&#127851;</div><div><h3>MRP Product Distribution</h3><p>Tuckshop counters stocked with biscuits, snacks, chocolates, health bars & beverages from 10+ brands.</p></div></div>
 </div>
 </div>
-</section>
 
-<section id="mission" class="sec">
-<div class="glow" style="width:400px;height:400px;bottom:-60px;right:-80px;background:var(--hot-red)"></div>
+<!-- Mission & Values — flows directly from About -->
+<div class="mission-block">
 <div class="mission-grid">
 <div class="mission-left">
-<div class="stag reveal">Mission &amp; Values</div>
+<div class="stag reveal">Our Mission</div>
 <h2 class="sh reveal rd1">Why we <span class="gold">exist</span>.</h2>
 <p class="mission-quote reveal rd2">"A <span class="gold">cafeteria</span> and <span class="gold">MRP tuckshop</span> in every company we can reach."</p>
-<p class="mission-body reveal rd3">Our mission is simple — set up and operate high-quality food counters and product tuckshops in as many corporate campuses as possible. From a 200-person office to a 10,000-employee tech park, every workspace deserves great food, clean service, and a well-stocked counter. Our vision is to take this brand global.</p>
+<p class="mission-body reveal rd3">From a 200-person office to a 10,000-employee tech park, every workspace deserves great food, clean service, and a well-stocked counter. We started in Pune with a single campus and we're scaling across India — with a long-term vision to take this model global.</p>
 </div>
 <div>
 <div class="values-grid">
 <div class="val-card reveal rd2"><div class="val-icon">&#129532;</div><h4>Cleanliness</h4><p>FSSAI licensed. Daily sanitation, food-grade equipment, gloves & hairnets mandatory at every counter.</p></div>
 <div class="val-card reveal rd3"><div class="val-icon">&#128591;</div><h4>Hospitality</h4><p>Trained staff who greet with a smile. Corporate employees deserve restaurant-level warmth.</p></div>
 <div class="val-card reveal rd4"><div class="val-icon">&#11088;</div><h4>Quality</h4><p>Same fresh taste every day. Strict sourcing, daily checks, and standardized recipes across branches.</p></div>
-<div class="val-card reveal rd5"><div class="val-icon">&#128200;</div><h4>Growth</h4><p>Our vision is to go global — starting with every corporate campus in Pune, then India, then beyond.</p></div>
+<div class="val-card reveal rd5"><div class="val-icon">&#128200;</div><h4>Growth</h4><p>Starting with every corporate campus in Pune, then India, then beyond.</p></div>
+</div>
 </div>
 </div>
 </div>
 </section>
 
-<section id="pizza" class="sec">
+<!-- ═══════════ WHAT WE OFFER (Pizza + Ice Cream + MRP + Products) ═══════════ -->
+<section id="offerings" class="sec">
 <div class="glow" style="width:400px;height:400px;bottom:-60px;left:-80px;background:var(--hot-red)"></div>
+
+<!-- Big Short Pizza — flagship -->
 <div class="pizza-grid">
 <div>
-<div class="stag reveal">Our Own Brand</div>
+<div class="stag reveal">Flagship Brand</div>
 <h2 class="sh reveal rd1">Big Short Pizza —<br><span class="gold">Fresh dough, daily.</span></h2>
-<p class="sd reveal rd2">Unlike chains that rely on frozen, pre-made dough shipped from central kitchens, Big Short Pizza prepares fresh dough in-house every single day. That's why companies choose us over the alternatives — better taste, fresher ingredients, and a counter that feels like part of their campus, not a franchise.</p>
+<p class="sd reveal rd2">Unlike chains that rely on frozen, pre-made dough shipped from central kitchens, Big Short Pizza prepares fresh dough in-house every single day. That's why companies choose us — better taste, fresher ingredients, and a counter that feels like part of their campus.</p>
 <div class="usp-cards">
 <div class="usp reveal rd3"><div class="usp-emoji">&#129374;</div><h4>Fresh Dough Daily</h4><p>Never frozen. Prepared in-house every morning before service.</p></div>
 <div class="usp reveal rd4"><div class="usp-emoji">&#127860;</div><h4>Full Menu</h4><p>Pizzas, burgers, pastas, rolls, sides & fresh mojitos.</p></div>
@@ -396,16 +390,43 @@ nav{padding:.8rem 5vw}
 </div>
 </div>
 <div class="pizza-visual reveal rd2" style="background:var(--black)">
-<video width="100%" height="100%" style="width:100%;height:100%;object-fit:cover;border-radius:24px;" controls playsinline preload="metadata" poster="">
+<video width="100%" height="100%" style="width:100%;height:100%;object-fit:cover;border-radius:24px;" controls playsinline preload="metadata">
 <source src="videos/dough-making.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 </div>
 </div>
-</section>
 
-<section id="products-showcase">
-<div style="text-align:center;margin-bottom:2.5rem">
+<!-- Ice Cream + MRP — other offerings -->
+<div class="offerings-sub">
+<div style="text-align:center;margin-bottom:.5rem">
+<div class="stag reveal" style="justify-content:center;display:flex">More Than Just Pizza</div>
+<h2 class="sh reveal rd1" style="text-align:center">Ice cream counters &amp; <span class="gold">MRP tuckshops</span>.</h2>
+<p class="sd reveal rd2" style="text-align:center;margin-left:auto;margin-right:auto">Alongside Big Short Pizza, we run fully managed ice cream parlours and tuckshop counters stocked with India's leading FMCG brands.</p>
+</div>
+<div class="offerings-duo">
+<div class="offer-card reveal rd3">
+<div class="offer-card-icon">&#127846;</div>
+<h3>Ice Cream Counters</h3>
+<p>From Amul Tricones and scooping counters to kulfi and seasonal specials — we set up and operate dedicated ice cream stations that corporate employees love. Temperature-controlled freezers, daily restocking, and trained staff included.</p>
+<ul>
+<li>Amul</li><li>Tricones</li><li>Kulfi</li><li>Scooping</li><li>Seasonal Specials</li>
+</ul>
+</div>
+<div class="offer-card reveal rd4">
+<div class="offer-card-icon">&#127851;</div>
+<h3>MRP Product Tuckshops</h3>
+<p>A fully stocked grab-and-go counter inside your campus cafeteria. Biscuits, chips, health bars, chocolates, beverages — everything your employees need, at MRP, restocked daily. No vending machine downtime, no stale inventory.</p>
+<ul>
+<li>Chocolates</li><li>Chips & Snacks</li><li>Health Bars</li><li>Beverages</li><li>Biscuits</li><li>Protein Bars</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- Product Marquee — what we stock -->
+<div class="products-marquee">
+<div style="text-align:center;margin-bottom:.5rem">
 <div class="stag reveal" style="justify-content:center;display:flex">What We Stock &amp; Serve</div>
 <h2 class="sh reveal rd1" style="text-align:center">Products at our <span class="gold">tuckshop counters</span>.</h2>
 </div>
@@ -422,7 +443,7 @@ Your browser does not support the video tag.
 <div class="showcase-item"><div class="si-img-wrap"><img src="images/products/to-be-honest.png" alt="To Be Honest" onerror="this.src='https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=200&h=200&fit=crop&q=80'"></div><div class="si-label">To Be Honest</div></div>
 <div class="showcase-item"><div class="si-img-wrap"><img src="images/products/nutrutias.png" alt="Nutrutias Chikki" onerror="this.src='https://images.unsplash.com/photo-1599599810694-b5b37304c041?w=200&h=200&fit=crop&q=80'"></div><div class="si-label">Nutrutias Chikki</div></div>
 <div class="showcase-item"><div class="si-img-wrap"><img src="images/products/cheddas.png" alt="Cheddas" onerror="this.src='https://images.unsplash.com/photo-1621447504864-d8686e12698c?w=200&h=200&fit=crop&q=80'"></div><div class="si-label">Cheddas</div></div>
-<!-- DUPLICATE for seamless loop -->
+<!-- Duplicated for seamless loop -->
 <div class="showcase-item"><div class="si-img-wrap"><img src="images/products/big-short-pizza.png" alt="Big Short Pizza" onerror="this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&h=200&fit=crop&q=80'"></div><div class="si-label">Big Short Pizza</div></div>
 <div class="showcase-item"><div class="si-img-wrap"><img src="images/products/amul-tricone.png" alt="Amul TriCone" onerror="this.src='https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=200&h=200&fit=crop&q=80'"></div><div class="si-label">Amul Ice Cream</div></div>
 <div class="showcase-item"><div class="si-img-wrap"><img src="images/products/cadbury.png" alt="Cadbury" onerror="this.src='https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=200&h=200&fit=crop&q=80'"></div><div class="si-label">Cadbury</div></div>
@@ -436,29 +457,26 @@ Your browser does not support the video tag.
 <div class="showcase-item"><div class="si-img-wrap"><img src="images/products/nutrutias.png" alt="Nutrutias Chikki" onerror="this.src='https://images.unsplash.com/photo-1599599810694-b5b37304c041?w=200&h=200&fit=crop&q=80'"></div><div class="si-label">Nutrutias Chikki</div></div>
 <div class="showcase-item"><div class="si-img-wrap"><img src="images/products/cheddas.png" alt="Cheddas" onerror="this.src='https://images.unsplash.com/photo-1621447504864-d8686e12698c?w=200&h=200&fit=crop&q=80'"></div><div class="si-label">Cheddas</div></div>
 </div></div>
-</section>
-
-<section id="logistics" class="sec">
-<div class="glow" style="width:400px;height:400px;top:10%;left:-80px;background:var(--gold)"></div>
-<div class="stag reveal">Shipping &amp; Logistics</div>
-<h2 class="sh reveal rd1">End-to-end <span class="gold">supply chain</span>,<br>handled by us.</h2>
-<p class="sd reveal rd2">From procurement to last-mile delivery to your corporate cafeteria — we manage the entire logistics chain so you don't have to.</p>
-<div class="logistics-grid">
-<div class="log-card reveal rd1">
-<div class="log-img"><img src="images/logistics/warehouse.jpeg" alt="Warehouse & Storage" loading="lazy" onerror="this.parentElement.innerHTML='<div class=log-img-placeholder>&#128230;</div>'"></div>
-<div class="log-body"><h3>Procurement &amp; Storage</h3><p>Direct sourcing from Amul, ITC, Cadbury and more. Temperature-controlled storage for ice cream and perishables. Bulk purchasing for competitive pricing.</p></div>
-</div>
-<div class="log-card reveal rd2">
-<div class="log-img"><img src="images/logistics/delivery.jpeg" alt="Direct Delivery" loading="lazy" onerror="this.parentElement.innerHTML='<div class=log-img-placeholder>&#128666;</div>'"></div>
-<div class="log-body"><h3>Direct Campus Delivery</h3><p>Our fleet delivers directly to your campus canteen, office pantry, or event venue — daily scheduled drops across Pune and growing cities.</p></div>
-</div>
-<div class="log-card reveal rd3">
-<div class="log-img"><img src="images/logistics/counter-ops.jpeg" alt="Counter Operations" loading="lazy" onerror="this.parentElement.innerHTML='<div class=log-img-placeholder>&#9201;</div>'"></div>
-<div class="log-body"><h3>On-Time, Every Time</h3><p>Whether it's a daily restock or a scheduled canteen delivery, we guarantee timely service with real-time tracking and dedicated account managers.</p></div>
-</div>
 </div>
 </section>
 
+<!-- ═══════════ WHY CHOOSE US (NEW) ═══════════ -->
+<section id="why-us" class="sec">
+<div class="glow" style="width:400px;height:400px;top:-40px;right:-80px;background:var(--gold)"></div>
+<div style="text-align:center">
+<div class="stag reveal" style="justify-content:center;display:flex">Why Companies Choose Nibblix</div>
+<h2 class="sh reveal rd1" style="text-align:center">What sets us <span class="gold">apart</span>.</h2>
+<p class="sd reveal rd2" style="text-align:center;margin-left:auto;margin-right:auto">We're not a vendor — we're an extension of your campus. Here's why India's top corporates trust Nibblix.</p>
+</div>
+<div class="why-grid">
+<div class="why-card reveal rd1"><div class="why-icon">&#128176;</div><h4>Zero Investment</h4><p>We bring the equipment, staff, and inventory. The company provides the space — we handle the rest.</p></div>
+<div class="why-card reveal rd2"><div class="why-icon">&#129533;</div><h4>Trained Staff</h4><p>Every counter is run by a trained branch manager with dedicated team members following SOPs daily.</p></div>
+<div class="why-card reveal rd3"><div class="why-icon">&#128203;</div><h4>Fully Compliant</h4><p>FSSAI licensed, GST registered, ESIC & PF compliant. Every legal box is checked before we start.</p></div>
+<div class="why-card reveal rd4"><div class="why-icon">&#128666;</div><h4>Daily Restocking</h4><p>Our own fleet delivers fresh inventory to every campus daily. No stale stock, no empty shelves.</p></div>
+</div>
+</section>
+
+<!-- ═══════════ PARTNERS & BRANDS ═══════════ -->
 <section id="clients" class="sec">
 <div class="glow" style="width:400px;height:400px;top:20%;right:-80px;background:var(--gold)"></div>
 <div class="stag reveal">Partners &amp; Brands</div>
@@ -492,18 +510,58 @@ Your browser does not support the video tag.
 </div>
 </section>
 
-<section id="branches" class="sec">
+<!-- ═══════════ OUR PRESENCE — BRANCHES ═══════════ -->
+<section id="branches" class="sec" style="background:var(--surface-2)">
 <div class="stag reveal">Our Presence</div>
 <h2 class="sh reveal rd1">Inside India's top <span class="gold">corporate campuses</span>.</h2>
 <p class="sd reveal rd2">From Bajaj Auto to Infosys — we power the cafeterias and tuckshops that fuel innovation.</p>
 <div class="branch-grid">
-<div class="branch-card reveal rd1"><img src="images/branches/bigshort-counter.jpeg" alt="Bajaj Auto" loading="lazy"><div class="branch-overlay"><div class="branch-tag">Big Short Pizza + Amul</div><div class="branch-name">Bajaj Auto Campus</div><div class="branch-addr">Akurdi, Pune 411044</div></div></div>
-<div class="branch-card reveal rd2"><img src="images/branches/amul-counter.jpeg" alt="Capgemini" loading="lazy"><div class="branch-overlay"><div class="branch-tag">Big Short Pizza</div><div class="branch-name">Capgemini Campus</div><div class="branch-addr">Hinjewadi Phase 3, Pune 411057</div></div></div>
+<!-- FIXED: Swapped Bajaj and Capgemini images -->
+<div class="branch-card reveal rd1"><img src="images/branches/amul-counter.jpeg" alt="Bajaj Auto" loading="lazy"><div class="branch-overlay"><div class="branch-tag">Big Short Pizza + Amul</div><div class="branch-name">Bajaj Auto Campus</div><div class="branch-addr">Akurdi, Pune 411044</div></div></div>
+<div class="branch-card reveal rd2"><img src="images/branches/bigshort-counter.jpeg" alt="Capgemini" loading="lazy"><div class="branch-overlay"><div class="branch-tag">Big Short Pizza</div><div class="branch-name">Capgemini Campus</div><div class="branch-addr">Hinjewadi Phase 3, Pune 411057</div></div></div>
 <div class="branch-card reveal rd3"><img src="images/branches/mercedes-counter.jpeg" alt="Mercedes" loading="lazy"><div class="branch-overlay"><div class="branch-tag">Grab &amp; Go Counter</div><div class="branch-name">Mercedes-Benz Campus</div><div class="branch-addr">Pune</div></div></div>
 <div class="branch-card reveal rd4"><img src="images/branches/infosys-counter.jpeg" alt="Infosys" loading="lazy"><div class="branch-overlay"><div class="branch-tag">Big Short Pizza</div><div class="branch-name">Infosys Campus</div><div class="branch-addr">Hinjewadi, Pune</div></div></div>
 </div>
 </section>
 
+<!-- ═══════════ HOW IT WORKS (NEW) ═══════════ -->
+<section id="how-it-works" class="sec">
+<div class="glow" style="width:400px;height:400px;top:10%;left:-80px;background:var(--gold)"></div>
+<div style="text-align:center">
+<div class="stag reveal" style="justify-content:center;display:flex">Getting Started</div>
+<h2 class="sh reveal rd1" style="text-align:center">How it <span class="gold">works</span>.</h2>
+<p class="sd reveal rd2" style="text-align:center;margin-left:auto;margin-right:auto">From first contact to a fully running counter — here's the process.</p>
+</div>
+<div class="steps-grid">
+<div class="step-card reveal rd1"><div class="step-num">01</div><div class="step-icon">&#128222;</div><h4>You Reach Out</h4><p>Contact us via the form, phone, or email. Tell us about your campus, employee count, and what you need.</p></div>
+<div class="step-card reveal rd2"><div class="step-num">02</div><div class="step-icon">&#128269;</div><h4>Campus Survey</h4><p>Our team visits your campus to assess the cafeteria space, footfall, and infrastructure requirements.</p></div>
+<div class="step-card reveal rd3"><div class="step-num">03</div><div class="step-icon">&#128295;</div><h4>Setup &amp; Staffing</h4><p>We bring in the equipment, set up the counter, hire and train a dedicated branch team — all at our cost.</p></div>
+<div class="step-card reveal rd4"><div class="step-num">04</div><div class="step-icon">&#9989;</div><h4>Go Live</h4><p>Your counter is operational. Daily restocking, quality checks, and account management — all handled by us.</p></div>
+</div>
+</section>
+
+<!-- ═══════════ LOGISTICS ═══════════ -->
+<section id="logistics" class="sec">
+<div class="stag reveal">Supply Chain</div>
+<h2 class="sh reveal rd1">End-to-end <span class="gold">logistics</span>,<br>handled by us.</h2>
+<p class="sd reveal rd2">From procurement to last-mile delivery to your corporate cafeteria — we manage the entire supply chain so you don't have to.</p>
+<div class="logistics-grid">
+<div class="log-card reveal rd1">
+<div class="log-img"><img src="images/logistics/warehouse.jpeg" alt="Warehouse & Storage" loading="lazy" onerror="this.parentElement.innerHTML='<div class=log-img-placeholder>&#128230;</div>'"></div>
+<div class="log-body"><h3>Procurement &amp; Storage</h3><p>Direct sourcing from Amul, ITC, Cadbury and more. Temperature-controlled storage for ice cream and perishables. Bulk purchasing for competitive pricing.</p></div>
+</div>
+<div class="log-card reveal rd2">
+<div class="log-img"><img src="images/logistics/delivery.jpeg" alt="Direct Delivery" loading="lazy" onerror="this.parentElement.innerHTML='<div class=log-img-placeholder>&#128666;</div>'"></div>
+<div class="log-body"><h3>Direct Campus Delivery</h3><p>Our fleet delivers directly to your campus canteen, office pantry, or event venue — daily scheduled drops across Pune and growing cities.</p></div>
+</div>
+<div class="log-card reveal rd3">
+<div class="log-img"><img src="images/logistics/counter-ops.jpeg" alt="Counter Operations" loading="lazy" onerror="this.parentElement.innerHTML='<div class=log-img-placeholder>&#9201;</div>'"></div>
+<div class="log-body"><h3>On-Time, Every Time</h3><p>Whether it's a daily restock or a scheduled canteen delivery, we guarantee timely service with real-time tracking and dedicated account managers.</p></div>
+</div>
+</div>
+</section>
+
+<!-- ═══════════ TEAM ═══════════ -->
 <section id="team" class="sec">
 <div class="stag reveal">Our People</div>
 <h2 class="sh reveal rd1">The team behind every <span class="gold">counter</span>.</h2>
@@ -518,7 +576,8 @@ Your browser does not support the video tag.
 </div>
 </section>
 
-<section id="legal" class="sec">
+<!-- ═══════════ LEGAL ═══════════ -->
+<section id="legal" class="sec" style="background:var(--surface)">
 <div class="stag reveal">Legal &amp; Compliance</div>
 <h2 class="sh reveal rd1">Fully registered, fully <span class="gold">compliant</span>.</h2>
 <p class="sd reveal rd2">Nibblix India Pvt Ltd (CIN: U47890PN2025PTC246775). Click to view documents.</p>
@@ -535,13 +594,14 @@ Your browser does not support the video tag.
 </div>
 </section>
 
-<section id="contact" class="sec">
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact" class="sec" style="background:var(--surface-2)">
 <div class="glow" style="width:350px;height:350px;top:40%;right:5%;background:var(--gold)"></div>
 <div class="contact-grid">
 <div class="reveal">
 <div class="stag">Get In Touch</div>
 <div class="contact-big">Want a Big Short Pizza counter or tuckshop at <span class="gold">your campus</span>?</div>
-<p class="sd" style="margin-bottom:0">Whether you're an aggregator, a corporate FM team, or a campus admin — let's talk.</p>
+<p class="sd" style="margin-bottom:0">Whether you're an aggregator, a corporate FM team, or a campus admin — let's talk. We'll survey your space and have a proposal ready within a week.</p>
 <div class="contact-items">
 <div class="ci"><div class="ci-icon">&#128100;</div><span>Abhishek Keskar — Managing Director</span></div>
 <div class="ci"><div class="ci-icon">&#128222;</div><span>+91 97639 89044</span></div>
@@ -554,13 +614,14 @@ Your browser does not support the video tag.
 <div class="frow"><div class="fg"><label>Full Name</label><input type="text" name="from_name" placeholder="Your name" required></div><div class="fg"><label>Company</label><input type="text" name="company" placeholder="Company name"></div></div>
 <div class="fg"><label>Email</label><input type="email" name="reply_to" placeholder="you@company.com" required></div>
 <div class="fg"><label>Phone</label><input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required></div>
-<div class="fg"><label>Message</label><textarea name="message" placeholder="Tell us about your campus and requirements..." required></textarea></div>
+<div class="fg"><label>Message</label><textarea name="message" placeholder="Tell us about your campus, employee count, and what you're looking for..." required></textarea></div>
 <button type="submit" class="btn-sub" id="submitBtn">Send Inquiry</button>
 <p id="formStatus" style="text-align:center;margin-top:.8rem;font-size:.82rem;display:none"></p>
 </form>
 </div>
 </section>
 
+<!-- ═══════════ FOOTER ═══════════ -->
 <footer>
 <div class="fc">&copy; 2026 <a href="https://nibblixindia.com">Nibblix India Pvt Ltd</a> — CIN: U47890PN2025PTC246775</div>
 <div class="fsocial">
@@ -580,33 +641,14 @@ const cobs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const
 document.querySelectorAll('[data-t]').forEach(s=>cobs.observe(s));
 
 // ══════ SMOOTH MOUSE-TRACKED 3D PARALLAX ══════
-const heroEl = document.getElementById('hero');
-const floats = document.querySelectorAll('.float-img');
-let mouseX = 0, mouseY = 0, curX = 0, curY = 0;
-let ticking = false;
-
-heroEl.addEventListener('mousemove', (e) => {
-  const rect = heroEl.getBoundingClientRect();
-  mouseX = (e.clientX - rect.left) / rect.width - 0.5;
-  mouseY = (e.clientY - rect.top) / rect.height - 0.5;
-});
-heroEl.addEventListener('mouseleave', () => { mouseX = 0; mouseY = 0; });
-
-function parallaxLoop() {
-  curX += (mouseX - curX) * 0.04;
-  curY += (mouseY - curY) * 0.04;
-  floats.forEach((f, i) => {
-    const depth = 0.6 + (i % 4) * 0.4;
-    const moveX = curX * 50 * depth;
-    const moveY = curY * 35 * depth;
-    const rotY = curX * 18 * depth;
-    const rotX = -curY * 12 * depth;
-    f.style.transform = `translate(${moveX}px, ${moveY}px) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
-  });
-  requestAnimationFrame(parallaxLoop);
-}
+const heroEl=document.getElementById('hero');const floats=document.querySelectorAll('.float-img');
+let mouseX=0,mouseY=0,curX=0,curY=0;
+heroEl.addEventListener('mousemove',(e)=>{const r=heroEl.getBoundingClientRect();mouseX=(e.clientX-r.left)/r.width-.5;mouseY=(e.clientY-r.top)/r.height-.5});
+heroEl.addEventListener('mouseleave',()=>{mouseX=0;mouseY=0});
+function parallaxLoop(){curX+=(mouseX-curX)*.04;curY+=(mouseY-curY)*.04;floats.forEach((f,i)=>{const d=.6+(i%4)*.4;f.style.transform=`translate(${curX*50*d}px,${curY*35*d}px) rotateY(${curX*18*d}deg) rotateX(${-curY*12*d}deg)`});requestAnimationFrame(parallaxLoop)}
 parallaxLoop();
 
+// ══════ EMAILJS ══════
 emailjs.init('68vHPVd55bA5CSGzl');
 document.getElementById('contactForm').addEventListener('submit',function(e){
 e.preventDefault();const btn=document.getElementById('submitBtn');const st=document.getElementById('formStatus');
